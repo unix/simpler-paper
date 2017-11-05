@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "lib": ["es2015"],
+    "module": "commonjs",
+    "target": "es5",
+    "declaration": true,
+    "declarationDir": "./@types",
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "removeComments": true,
+    "noImplicitAny": false,
+    "preserveConstEnums": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "typeRoots": [
+      "node_modules/@types",
+      "typings"
+    ]
+  },
+  "compileOnSave": false,
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
