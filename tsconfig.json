@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "lib": ["es2015"],
-    "module": "commonjs",
     "target": "es5",
     "declaration": true,
     "declarationDir": "./@types",
@@ -18,7 +17,7 @@
     ]
   },
   "compileOnSave": false,
-  "include": [
+  "includes": [
     "src/**/*"
   ],
   "exclude": [
