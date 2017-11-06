@@ -13,11 +13,11 @@ const generateCatalog = (name: string, config: Config, children: Catalog[] = [])
   children,
 })
 
-const generateDirectory = async(path: string, config: Config): Catalog[] => {
+const generateDirectory = async(path: string, config: Config): Promise<Catalog[]> => {
   const files: string[] = await File.readdir(path)
   
-  let catalogs: Catalog[] = []
-  for (let name of files) {
+  const catalogs: Catalog[] = []
+  for (const name of files) {
     if (!isMarkFileOrDirectory(name)) continue
     const p: string = `${path}/${name}`
     const stat = await File.stat(p)
