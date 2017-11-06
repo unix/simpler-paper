@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack --config ./build/webpack.config.js --progress --watch",
-    "build": "rm -rf ./dist && webpack --config ./build/webpack.config.js --progress"
+    "build": "rm -rf ./dist && webpack --config ./build/webpack.config.js --progress",
+    "app": "env DEBUG=true webpack-dev-server --config build/webpack.app.dev.js --no-inline --progress --port 3001",
+    "app:build": "webpack --config build/webpack.app.prod.js"
   },
   "bin": {
     "paper": "dist/bin/paper.js"
@@ -21,7 +23,10 @@
   },
   "homepage": "https://github.com/DhyanaChina/simpler-paper#readme",
   "devDependencies": {
+    "@types/commander": "^2.11.0",
+    "@types/marked": "^0.3.0",
     "@types/node": "^8.0.47",
+    "@types/promise": "^7.1.30",
     "ts-loader": "^3.1.1",
     "tslint": "^5.8.0",
     "tslint-loader": "^3.5.3",
@@ -31,8 +36,15 @@
   "dependencies": {
     "chalk": "^2.3.0",
     "commander": "^2.11.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "html-loader": "^0.5.1",
+    "html-webpack-plugin": "^2.30.1",
     "inquirer": "^3.3.0",
+    "marked": "^0.3.6",
     "ora": "^1.3.0",
-    "util.promisify": "^1.0.0"
+    "url-loader": "^0.6.2",
+    "util.promisify": "^1.0.0",
+    "webpack-dev-server": "^2.9.4",
+    "webpack-merge": "^4.1.1"
   }
 }

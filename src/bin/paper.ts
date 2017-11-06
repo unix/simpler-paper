@@ -11,7 +11,7 @@ if (+v < 5) {
 commander
   .version(version)
   .usage('<command> [options]')
-  .command('run', 'generate document')
+  .command('build', 'generate document')
   .parse(process.argv)
 
   
