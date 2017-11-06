@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack --config ./build/webpack.config.js --progress --watch",
-    "build": "rm -rf ./dist && webpack --config ./build/webpack.config.js --progress"
+    "build": "rm -rf ./dist && webpack --config ./build/webpack.config.js --progress",
+    "app": "env DEBUG=true webpack-dev-server --config build/webpack.app.dev.js --no-inline --progress --port 1338"
   },
   "bin": {
     "paper": "dist/bin/paper.js"
@@ -33,9 +34,15 @@
   "dependencies": {
     "chalk": "^2.3.0",
     "commander": "^2.11.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "html-loader": "^0.5.1",
+    "html-webpack-plugin": "^2.30.1",
     "inquirer": "^3.3.0",
     "marked": "^0.3.6",
     "ora": "^1.3.0",
-    "util.promisify": "^1.0.0"
+    "url-loader": "^0.6.2",
+    "util.promisify": "^1.0.0",
+    "webpack-dev-server": "^2.9.4",
+    "webpack-merge": "^4.1.1"
   }
 }
