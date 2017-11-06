@@ -1,5 +1,7 @@
 import * as commander from 'commander'
-import Check from '../utils/check'
+import { checkSource, checkConfig } from '../utils/check'
+import { compileToHtml } from '../compile'
+import { defaultConfig, Config } from '../utils/config.default'
 
 // parse id
 commander
@@ -9,8 +11,9 @@ const sourcePath: string = `${commander.args[0]}`
 
 ;(async() => {
   // check path
-  if (!Check.source(sourcePath)) return
-  
+  if (!await checkSource(sourcePath)) return
+  const config: Config = Object.assign({}, defaultConfig, await checkConfig(sourcePath))
+  await compileToHtml(sourcePath, config)
   
 })()
 
