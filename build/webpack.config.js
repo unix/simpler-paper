@@ -36,7 +36,7 @@ module.exports = (async() => {
     resolve: {
       extensions: [ '.ts', '.js'],
       modules: [
-        path.join(__dirname, '/node_modules'),
+        path.join(__dirname, '../node_modules'),
       ],
     },
   
@@ -55,6 +55,9 @@ module.exports = (async() => {
           test: /\.ts$/,
           loader: 'ts-loader',
           exclude: /node_modules/,
+          options: {
+            configFile: path.resolve(__dirname, '../tsconfig.json'),
+          }
         },
       ],
     },
