@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "lib": ["es2015", "dom"],
+    "module": "commonjs",
+    "target": "es5",
+    "moduleResolution": "node",
+    "removeComments": true,
+    "noImplicitAny": false,
+    "preserveConstEnums": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "typeRoots": [
+      "../../node_modules/@types",
+      "typings"
+    ]
+  },
+  "compileOnSave": false,
+
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src"
+  ]
+}
