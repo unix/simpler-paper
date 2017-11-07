@@ -13,7 +13,11 @@ const sourcePath: string = `${commander.args[0]}`
   // check path
   
   if (!await checkSource(sourcePath)) return
-  const config: Config = Object.assign({}, defaultConfig, await checkConfig(sourcePath))
+  const config: Config = Object.assign({},
+    defaultConfig,
+    await checkConfig(sourcePath),
+    { __user_source_path: sourcePath },
+    )
   
   const catalogs: Catalog[] = await compileToHtml(sourcePath, config)
   await insertToApp(catalogs, sourcePath, config)

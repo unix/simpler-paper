@@ -5,6 +5,7 @@ export type Config = {
   minimap: boolean,
   backToTop: boolean,
   nofollow: boolean,
+  __user_source_path?: string,
 }
 
 export type Catalog = {
