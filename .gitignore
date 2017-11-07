@@ -57,3 +57,8 @@ typings/
 # dotenv environment variables file
 .env
 
+# compile cache
+templates/temp
+templates/target
+
+

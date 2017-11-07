@@ -1,7 +1,7 @@
 import * as commander from 'commander'
 import { checkSource, checkConfig } from '../utils/check'
-import { compileToHtml } from '../compile'
-import { defaultConfig, Config } from '../utils/config.default'
+import { compileToHtml, insertToApp } from '../compile'
+import { defaultConfig, Config, Catalog } from '../utils/config.default'
 
 // parse id
 commander
@@ -11,9 +11,12 @@ const sourcePath: string = `${commander.args[0]}`
 
 ;(async() => {
   // check path
+  
   if (!await checkSource(sourcePath)) return
   const config: Config = Object.assign({}, defaultConfig, await checkConfig(sourcePath))
-  await compileToHtml(sourcePath, config)
+  
+  const catalogs: Catalog[] = await compileToHtml(sourcePath, config)
+  await insertToApp(catalogs, sourcePath, config)
   
 })()
 
