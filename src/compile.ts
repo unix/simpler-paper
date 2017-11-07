@@ -1,5 +1,6 @@
 import { resolve } from 'path'
 import File from './utils/file'
+import Log from './utils/log'
 import { Config, Catalog } from './utils/config.default'
 import * as marked from 'marked'
 const __temp = `${resolve()}/templates/temp/`
@@ -44,7 +45,9 @@ const generateDirectory = async(path: string, config: Config): Promise<Catalog[]
 }
 
 export const compileToHtml = async(path: string, config: Config) => {
+  Log.time.start()
   const catalogs: Catalog[] = await generateDirectory(path, config)
+  Log.time.over('generate catalog')
   return catalogs
 }
 
@@ -85,10 +88,18 @@ const generatePages = async(catalogs: Catalog[], sourcePath: string): Promise<vo
 }
 
 export const insertToApp = async (catalogs: Catalog[], sourcePath: string, config: Config) => {
+  Log.time.start()
   File.spawnSync('rm', ['-rf', __temp])
+  Log.time.over('clear cache')
+  
+  Log.time.start()
   await File.mkdir(__temp)
   await generatePages(catalogs, sourcePath)
+  Log.time.over('compile to html')
+  
+  Log.time.start()
   await copyConfigFile(config)
   await copyCatalogsFile(catalogs)
+  Log.time.over('copy config')
 }
 
