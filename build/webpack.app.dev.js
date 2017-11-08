@@ -19,7 +19,7 @@ module.exports = webpackMerge(baseConfig, {
   
   devServer: {
     historyApiFallback: true,
-    contentBase: './templates/target',
+    contentBase: './templates',
     stats: 'minimal',
   }
 })

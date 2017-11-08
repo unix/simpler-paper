@@ -10,7 +10,7 @@ module.exports = {
   },
   
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name].bundle.[ext]',
     path: path.resolve(__dirname, '../templates/target'),
   },
   
@@ -19,7 +19,7 @@ module.exports = {
   target: 'web',
   
   resolve: {
-    extensions: [ '.ts', '.js', '.html', '.png' ],
+    extensions: [ '.ts', '.js', '.html', '.png', '.css' ],
     modules: [
       path.resolve(__dirname, '../node_modules'),
     ],
@@ -64,6 +64,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
+        // loader: 'css-loader',
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: 'css-loader',
