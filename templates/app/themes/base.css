@@ -1,0 +1,61 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', SimSun, sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: #4078c0;
+  text-decoration: none;
+}
+
+p {
+  margin: 5px 0;
+}
+
+div, ul, li {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+ul, li {
+  list-style: none;
+}
+
+code {
+  border: 1px solid #eaeefb;
+  border-radius: 4px;
+  padding: 0 6px;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+.hljs {
+  line-height: 1.8;
+  font-family: Menlo, Monaco, Consolas, Courier, monospace;
+  font-size: 12px;
+  padding: 12px 18px;
+  background: #f9fafc;
+  border: solid 1px #eaeefb;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  -webkit-font-smoothing: auto;
+}
+
+.main {
+  width: 100vw;
+  height: 100vh;
+}
