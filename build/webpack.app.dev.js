@@ -7,7 +7,8 @@ module.exports = webpackMerge(baseConfig, {
   devtool: 'cheap-module-eval-source-map',
   
   output: {
-    path: path.resolve(__dirname, '../template/target'),
+    path: path.resolve(__dirname, '../templates/target'),
+    publicPath: '/',
     filename: '[name].js',
     chunkFilename: '[id].chunk.js'
   },
@@ -18,6 +19,7 @@ module.exports = webpackMerge(baseConfig, {
   
   devServer: {
     historyApiFallback: true,
-    stats: 'minimal'
+    contentBase: './templates/target',
+    stats: 'minimal',
   }
 })

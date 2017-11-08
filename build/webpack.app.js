@@ -1,6 +1,7 @@
 const path = require('path')
 const lintConfig = require('../tslint.json')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
@@ -75,6 +76,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../templates/app/index.html'),
     }),
+    new CopyWebpackPlugin([{
+      from: path.resolve(__dirname, '../templates/temp'),
+      to: path.resolve(__dirname, '../templates/target/static'),
+      force: true,
+      toType: 'dir',
+      debug: true,
+    }]),
   ],
 }
 

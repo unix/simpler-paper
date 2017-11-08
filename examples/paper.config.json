@@ -5,5 +5,6 @@
   "title": "Simpler Paper",
   "minimap": true,
   "backToTop": true,
-  "nofollow": true
+  "nofollow": true,
+  "docPath": "/static/"
 }

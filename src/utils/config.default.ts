@@ -5,6 +5,7 @@ export type Config = {
   minimap: boolean,
   backToTop: boolean,
   nofollow: boolean,
+  docPath: string,
   __user_source_path?: string,
 }
 
@@ -17,6 +18,7 @@ export type Catalog = {
 export const defaultConfig: Config = {
   alias: {},
   title: 'Simpler Paper',
+  docPath: '/',
   minimap: false,
   backToTop: false,
   nofollow: false,
