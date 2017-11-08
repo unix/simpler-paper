@@ -10,18 +10,28 @@ const isMarkFileOrDirectory = (name: string): boolean => {
   return name.endsWith('.md') || !name.includes('.')
 }
 
-const makeDirectoryName = (name: string): string => {
+const makeNameAndWeight = (name: string): [string, number] => {
+  let weight: number = 100
   name = name.split('.md')[0]
-  if (!name.includes('/')) return name
-  return name.split('/').reverse()[0]
+  if (!name.includes('/')) return [name, weight]
+  name = name.split('/').reverse()[0]
+  
+  // the file name contains weights
+  // weight style: {num}_{native_file_name}.md
+  if (/^\d_/.test(name) && !Number.isNaN(+name[0])) {
+    weight = +name[0]
+    name = name.replace(/^\d_/, '')
+  }
+  return [name, weight]
 }
 
 const generateCatalog = (name: string, config: Config, children: Catalog[] = []) => {
-  const directoryName: string = makeDirectoryName(name)
+  const [directoryName, weight] = makeNameAndWeight(name)
   return {
     fileName: name,
     name: config.alias[directoryName] ? config.alias[directoryName] : directoryName,
     children,
+    weight,
   }
 }
 
@@ -41,7 +51,7 @@ const generateDirectory = async(path: string, config: Config): Promise<Catalog[]
       catalogs.push(generateCatalog(p, config, await generateDirectory(p, config)))
     }
   }
-  return catalogs
+  return catalogs.sort((pre, next) => pre.weight - next.weight)
 }
 
 export const compileToHtml = async(path: string, config: Config) => {
