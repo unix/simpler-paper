@@ -12,6 +12,7 @@ export type Config = {
 export type Catalog = {
   fileName: string,
   name: string,
+  weight: number,
   children?: Catalog[],
 }
 
