@@ -1,5 +1,5 @@
-const commander = require('commander')
-const chalk = require('chalk')
+import * as commander from 'commander'
+import chalk from 'chalk'
 const { version } = require('../../package.json')
 const v: string = process.version.match(/\d+/g)[0]
 if (+v < 5) {
