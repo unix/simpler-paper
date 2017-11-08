@@ -1,18 +1,19 @@
-import { resolve } from 'path'
 import File from './utils/file'
 import Log from './utils/log'
 import { Config, Catalog } from './utils/config.default'
 import * as marked from 'marked'
-const __temp = `${resolve()}/templates/temp/`
+import { Stats } from 'fs'
+const __temp = `${__dirname}/../../templates/temp`
+const USER_PATH = process.cwd()
 
 
 const isMarkFileOrDirectory = (name: string): boolean => {
   return name.endsWith('.md') || !name.includes('.')
 }
 
-const makeNameAndWeight = (name: string): [string, number] => {
+const makeNameAndWeight = (filePath: string): [string, number] => {
   let weight: number = 100
-  name = name.split('.md')[0]
+  let name = filePath.split('.md')[0]
   if (!name.includes('/')) return [name, weight]
   name = name.split('/').reverse()[0]
   
@@ -25,10 +26,10 @@ const makeNameAndWeight = (name: string): [string, number] => {
   return [name, weight]
 }
 
-const generateCatalog = (name: string, config: Config, children: Catalog[] = []) => {
-  const [directoryName, weight] = makeNameAndWeight(name)
+const generateCatalog = (filePath: string, config: Config, children: Catalog[] = []) => {
+  const [directoryName, weight] = makeNameAndWeight(filePath)
   return {
-    fileName: name,
+    fileName: filePath,
     name: config.alias[directoryName] ? config.alias[directoryName] : directoryName,
     children,
     weight,
@@ -36,19 +37,21 @@ const generateCatalog = (name: string, config: Config, children: Catalog[] = [])
 }
 
 const generateDirectory = async(path: string, config: Config): Promise<Catalog[]> => {
-  const files: string[] = await File.readdir(path)
-  
+  const files: string[] = await File.readdir(`${USER_PATH}/${path}`)
   const catalogs: Catalog[] = []
+  
   for (const name of files) {
     if (!isMarkFileOrDirectory(name)) continue
-    const p: string = `${path}/${name}`
-    const stat = await File.stat(p)
+    const nextPath: string = `${path}/${name}`
+    // .replace(/\/.\//g, '/')
+      // .replace(/\/\//g,'/')
+    const stat: Stats = await File.stat(nextPath)
     if (stat.isFile()) {
-      catalogs.push(generateCatalog(p, config))
+      catalogs.push(generateCatalog(nextPath, config))
       continue
     }
     if (stat.isDirectory()) {
-      catalogs.push(generateCatalog(p, config, await generateDirectory(p, config)))
+      catalogs.push(generateCatalog(nextPath, config, await generateDirectory(nextPath, config)))
     }
   }
   return catalogs.sort((pre, next) => pre.weight - next.weight)
@@ -61,6 +64,7 @@ export const compileToHtml = async(path: string, config: Config) => {
   return catalogs
 }
 
+
 const copyCatalogsFile = async(catalogs: Catalog[]): Promise<void> => {
   await File.writeFile(`${__temp}/catalogs.json`, JSON.stringify(catalogs))
 }
@@ -70,13 +74,8 @@ const copyConfigFile = async(config: Config): Promise<void> => {
 }
 
 const makeTargetPath = (path: string, sourcePath: string): string => {
-  return path.replace(sourcePath, __temp)
-}
-
-const createDirectory = async(targetPath: string): Promise<void> => {
-  if (!await File.exists(targetPath)) {
-    await File.mkdir(targetPath)
-  }
+  const sourceFullPath: string = path.split(sourcePath).reverse()[0]
+  return `${__temp}/${sourceFullPath}`
 }
 
 const createHtml = async(source: string, target: string): Promise<void> => {
@@ -86,10 +85,11 @@ const createHtml = async(source: string, target: string): Promise<void> => {
 }
 
 const generatePages = async(catalogs: Catalog[], sourcePath: string): Promise<void> => {
+  
   for (const unit of catalogs) {
     const p: string = makeTargetPath(unit.fileName, sourcePath)
     if (unit.children && unit.children.length > 0) {
-      await createDirectory(p)
+      await File.spawnSync('mkdir', [p])
       await generatePages(unit.children, sourcePath)
       continue
     }
@@ -103,7 +103,7 @@ export const insertToApp = async (catalogs: Catalog[], sourcePath: string, confi
   Log.time.over('clear cache')
   
   Log.time.start()
-  await File.mkdir(__temp)
+  await File.spawnSync('mkdir', [__temp])
   await generatePages(catalogs, sourcePath)
   Log.time.over('compile to html')
   

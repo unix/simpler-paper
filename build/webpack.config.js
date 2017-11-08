@@ -19,7 +19,7 @@ module.exports = (async() => {
   
   return {
     entry: Object.assign({
-      repbase: path.join(__dirname, '../src/index.ts'),
+      commander: path.join(__dirname, '../src/index.ts'),
     }, entriesMap),
   
     externals: externals,
@@ -32,6 +32,11 @@ module.exports = (async() => {
     devtool: isDebug ? 'source-map' : '',
   
     target: 'node',
+  
+    node: {
+      __dirname: false,
+      __filename: true,
+    },
   
     resolve: {
       extensions: [ '.ts', '.js'],

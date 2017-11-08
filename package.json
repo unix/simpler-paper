@@ -2,7 +2,7 @@
   "name": "simpler-paper",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "dist/bin/paper.js",
   "scripts": {
     "start": "webpack --config ./build/webpack.config.js --progress --watch",
     "build": "rm -rf ./dist && webpack --config ./build/webpack.config.js --progress",
@@ -12,6 +12,7 @@
   "bin": {
     "paper": "dist/bin/paper.js"
   },
+  "preferGlobal": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DhyanaChina/simpler-paper.git"
@@ -21,6 +22,14 @@
   "bugs": {
     "url": "https://github.com/DhyanaChina/simpler-paper/issues"
   },
+  "engines": {
+    "node": ">= 6.10"
+  },
+  "files": [
+    "LICENSE",
+    "dist/",
+    "templates/"
+  ],
   "homepage": "https://github.com/DhyanaChina/simpler-paper#readme",
   "devDependencies": {
     "@types/commander": "^2.11.0",
