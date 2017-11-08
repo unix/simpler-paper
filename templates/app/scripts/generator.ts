@@ -1,7 +1,7 @@
 import { Catalog, Config } from '../../../src/utils/config.default'
 
 const makeLink = (name: string, path: string): string => {
-  return name.replace(path, '../../temp/')
+  return name.replace(path, '')
 }
 
 const makeList = async(catalogs: Catalog[], path, d: Document) => {
