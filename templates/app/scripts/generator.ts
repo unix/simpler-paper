@@ -37,11 +37,33 @@ export const side = async(catalogs: Catalog[], config: Config): Promise<HTMLElem
 const initSubList = async () => {
   const containers: NodeListOf<Element> = document.querySelectorAll('.sub-list-container')
   const subList: NodeListOf<Element> = document.querySelectorAll('.sub-list')
+  
+  // click directory
   const handle: Function = (event: Event, container: Element) => {
-    const listLength = container.children.length - 1
-    const height: number = listLength * 40
+    const getUlRealHeight = (ul: HTMLElement) => {
+      const children: NodeListOf<Element> = ul.querySelectorAll('li')
+      const len: number = Array.from(children).length || 0
+      return len * 40
+    }
     const sub: HTMLElement = container.querySelector('.sub-list')
-    sub.style.height = sub.offsetHeight > 0 ? '0px' : `${height}px`
+    const height: number = getUlRealHeight(sub)
+    const isClose: boolean = sub.offsetHeight > 0
+    
+    // is deep directory
+    let deep: number = 5
+    const setParentHeight = (self: HTMLElement) => {
+      if (deep <= 0) return
+      deep --
+      const parent: HTMLElement = self.parentElement
+      const isList: boolean = parent.nodeName.toLowerCase() === 'ul'
+      const isSubList: boolean = parent.classList.contains('sub-list')
+      if (!isList || !isSubList) return setParentHeight(self.parentElement)
+      const nativeHeight: number = getUlRealHeight(parent)
+      parent.style.height = (isClose ? nativeHeight : nativeHeight + height) + 'px'
+      setParentHeight(self.parentElement)
+    }
+    setParentHeight(sub)
+    sub.style.height = isClose ? '0px' : `${height}px`
   }
   Array.from(containers).forEach(con => {
     con.addEventListener('click', (event: Event) => handle(event, con))
