@@ -1,0 +1,55 @@
+#side {
+  width: 250px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#side > ul {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  padding-left: 15px;
+  padding-top: 40px;
+}
+
+.chapter {
+  font-size: 15px;
+  line-height: 40px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.chapter.link {
+  color: #999;
+}
+.chapter.dir {
+ font-size: 18px;
+}
+.chapter.dir a {
+  color: #666;
+}
+
+#container {
+  width: 100%;
+  padding-left: 250px;
+}
+
+.sub-list {
+  padding: 0;
+  height: 0;
+  font-size: 15px;
+  overflow: hidden;
+  transition: all .25s ease-in-out;
+}
+.sub-list li {
+  padding-left: 8px;
+  line-height: 40px;
+}
+
+
+
+
