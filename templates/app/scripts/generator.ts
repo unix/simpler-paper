@@ -24,8 +24,9 @@ const makeList = async(catalogs: Catalog[], path, d: Document) => {
   return ul
 }
 
-export const side = async(catalogs: Catalog[], config: Config): Promise<HTMLElement> =>
-  await makeList(catalogs, config.__user_source_path, d)
+export const side = async(catalogs: Catalog[], config: Config): Promise<HTMLElement> => {
+  return await makeList(catalogs, config.__user_source_path, document)
+}
 
 
 const initSubList = async () => {
