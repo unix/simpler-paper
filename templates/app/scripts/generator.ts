@@ -43,7 +43,7 @@ const initSubList = async () => {
     const isClose: boolean = list.offsetHeight > 0
     
     // is deep directory
-    let deep: number = 5
+    let deep: number = 3
     const syncParentsHeight: Function = (self: HTMLElement): any => {
       if (deep <= 0) return
       deep --
@@ -55,6 +55,7 @@ const initSubList = async () => {
       
       const nativeHeight: number = getUlRealHeight(parent)
       parent.style.height = `${isClose ? nativeHeight : nativeHeight + height}px`
+      deep ++
       syncParentsHeight(self.parentElement)
     }
     syncParentsHeight(list)
