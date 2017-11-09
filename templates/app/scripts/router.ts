@@ -31,7 +31,12 @@ export class Router {
   
   private _parseHash(): void {
     const hash: string = Router.removeHashTag(window.location.hash)
-    const path: string = this.docPath + hash
+    let path: string = this.docPath + hash
+    
+    // default router path
+    if (path.endsWith('/')) {
+      path += window.__paper.router.default
+    }
     const htmlPath: string = Router.replaceSuffix(path)
     this._loader(Router.removeSlash(htmlPath)).then()
   }

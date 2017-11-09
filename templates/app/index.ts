@@ -4,6 +4,7 @@ require('./style')
 const config: Config = require('../temp/paper.config.json')
 const catalogs: Catalog[] = require('../temp/catalogs.json')
 import * as Generator from './scripts/generator'
+import { init } from './scripts/utils'
 import { Router } from './scripts/router'
 
 const docker: Function = async(w: Window, d: Document): Promise<void> => {
@@ -13,10 +14,12 @@ const docker: Function = async(w: Window, d: Document): Promise<void> => {
   side.appendChild(list)
   await Generator.event()
   
-  new Router(d.getElementById('container'), config.docPath).listen()
+  new Router(d.getElementById('container'), config.docPath)
+    .listen()
 }
 
 window.onload = (): void => {
+  init()
   docker(window, document).then()
 }
 

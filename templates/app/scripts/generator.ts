@@ -1,5 +1,10 @@
 import { Catalog, Config } from '../../../src/utils/config.default'
 
+const saveToDefaultRouter = (link: string) => {
+  if (window.__paper.router.default) return
+  window.__paper.router.default = link
+}
+
 const makeLink = (name: string, path: string): string => name.replace(path, '')
 
 const makeList = async(catalogs: Catalog[], path, d: Document) => {
@@ -16,6 +21,9 @@ const makeList = async(catalogs: Catalog[], path, d: Document) => {
       subList.classList.add('sub-list')
       li.appendChild(subList)
     } else {
+      // is link
+      // first link
+      saveToDefaultRouter(link)
       li.innerHTML = `<p class="chapter link"><a href="#${link}">${unit.name}</a></p>`
     }
     ul.appendChild(li)
