@@ -11,7 +11,7 @@
     "emitDecoratorMetadata": true,
     "typeRoots": [
       "../../node_modules/@types",
-      "typings"
+      "templates/app/typings"
     ]
   },
   "compileOnSave": false,
