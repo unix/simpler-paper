@@ -15,3 +15,11 @@ export const findHTML = (url: string): Promise<Response> => {
     .catch(e => j(e))
   })
 }
+
+export const init = (): void => {
+  window.__paper = {
+    router: {
+      default: null,
+    },
+  }
+}
