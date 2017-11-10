@@ -44,6 +44,7 @@ export class Router {
   private async _loader(path: string): Promise<void> {
     const res: Response = await findHTML(path)
     const _div: HTMLElement = document.createElement('div')
+    _div.classList.add('container-inner')
     _div.innerHTML = await res.text()
     this.slotElement.innerHTML = ''
     this.slotElement.appendChild(_div)

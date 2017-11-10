@@ -1,9 +1,18 @@
-#side {
-  width: 250px;
+.side-position {
+  width: 300px;
   position: fixed;
   left: 0;
   top: 0;
   bottom: 0;
+  background: #f1f1f1;
+}
+
+#side {
+  width: 100%;
+  height: 100%;
+  position: static;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 #side > ul {
@@ -33,9 +42,27 @@
   color: #666;
 }
 
+.container-position {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 300px;
+  background: #fafafa;
+}
+
 #container {
   width: 100%;
-  padding-left: 250px;
+  left: 250px;
+  position: static;
+  overflow-y: auto;
+}
+
+.container-inner {
+  max-width: 900px;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 10px 20px;
 }
 
 .sub-list {
