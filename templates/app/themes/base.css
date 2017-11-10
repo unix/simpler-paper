@@ -16,6 +16,10 @@ a {
   text-decoration: none;
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 p {
   margin: 5px 0;
 }
