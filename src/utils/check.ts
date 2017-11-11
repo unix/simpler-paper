@@ -1,5 +1,6 @@
 import File from './file'
 import Log from './log'
+import { Config } from './config.default'
 
 export const checkSource = async(path: string = ''): Promise<boolean> => {
   const pass: boolean = await File.exists(path)
@@ -21,6 +22,16 @@ export const checkConfig = async(path: string = ''): Promise<any> => {
   return result
 }
 
+export const checkTheme = async(config: Config): Promise<boolean> => {
+  const theme: string = config.theme || 'default'
+  const p: string = `${__dirname}/../../node_modules/simpler-paper-themes/dist/${theme}.css`
+  if (!await File.exists(p)) {
+    Log.notFoundTheme(theme)
+    process.exit(1)
+    return false
+  }
+  return true
+}
 
 
 

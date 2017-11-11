@@ -6,6 +6,7 @@ export type Config = {
   backToTop: boolean,
   nofollow: boolean,
   docPath: string,
+  theme: string,
   __user_source_path?: string,
 }
 
@@ -20,6 +21,7 @@ export const defaultConfig: Config = {
   alias: {},
   title: 'Simpler Paper',
   docPath: '/',
+  theme: 'default',
   minimap: false,
   backToTop: false,
   nofollow: false,

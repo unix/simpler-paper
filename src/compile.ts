@@ -97,7 +97,7 @@ const generatePages = async(catalogs: Catalog[], sourcePath: string): Promise<vo
   }
 }
 
-export const insertToApp = async (catalogs: Catalog[], sourcePath: string, config: Config) => {
+export const insertToApp = async(catalogs: Catalog[], sourcePath: string, config: Config) => {
   Log.time.start()
   File.spawnSync('rm', ['-rf', __temp])
   Log.time.over('clear cache')
@@ -111,5 +111,12 @@ export const insertToApp = async (catalogs: Catalog[], sourcePath: string, confi
   await copyConfigFile(config)
   await copyCatalogsFile(catalogs)
   Log.time.over('copy config')
+}
+
+export const copyTheme = async(config: Config): Promise<void> => {
+  const theme: string = config.theme || 'default'
+  const p: string = `${__dirname}/../../node_modules/simpler-paper-themes/dist/${theme}.css`
+  const themeStr: string = await File.readFile(p, 'utf-8')
+  await File.writeFile(`${__temp}/index.css`, themeStr)
 }
 

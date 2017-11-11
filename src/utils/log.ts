@@ -15,6 +15,10 @@ export default {
     console.log(chalk.red('\nError: paper.config.json is not a valid file.\n'))
   },
   
+  notFoundTheme: (theme: string) => {
+    console.log(chalk.red(`\nError: paper theme [${theme}] is not found.\n`))
+  },
+  
   time: {
     start(): void {
       startTime = hrtime()
