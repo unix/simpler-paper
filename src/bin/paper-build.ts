@@ -1,6 +1,6 @@
 import * as commander from 'commander'
-import { checkSource, checkConfig } from '../utils/check'
-import { compileToHtml, insertToApp } from '../compile'
+import { checkSource, checkConfig, checkTheme } from '../utils/check'
+import { compileToHtml, insertToApp, copyTheme } from '../compile'
 import { defaultConfig, Config, Catalog } from '../utils/config.default'
 import File from '../utils/file'
 import Log from '../utils/log'
@@ -25,6 +25,11 @@ const sourcePath: string = `${commander.args[0]}`
   
   const catalogs: Catalog[] = await compileToHtml(sourcePath, config)
   await insertToApp(catalogs, sourcePath, config)
+  
+  Log.time.start()
+  await checkTheme(config)
+  await copyTheme(config)
+  Log.time.over('generative theme')
   
   Log.time.start()
   await File.spawnSync('./node_modules/.bin/webpack', ['--config', './build/webpack.app.prod.js'])
