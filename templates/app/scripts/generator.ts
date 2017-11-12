@@ -1,5 +1,5 @@
 import { Catalog, Config } from '../../../src/utils/config.default'
-import HTML = marked.Tokens.HTML
+import { BackToTop } from './backToTop'
 
 const saveToDefaultRouter = (link: string) => {
   if (window.__paper.router.default) return
@@ -89,6 +89,10 @@ const initSubList = async () => {
   })
 }
 
-export const event = async(): Promise<void> => {
+export const event = async(config: Config): Promise<void> => {
   await initSubList()
+  if (config.backToTop) {
+    new BackToTop()
+  }
+  
 }
