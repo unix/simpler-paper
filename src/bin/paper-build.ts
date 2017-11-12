@@ -13,7 +13,8 @@ commander
 const sourcePath: string = `${commander.args[0]}`
 
 ;(async() => {
-  const templateTargetPath = `${__dirname}/../../templates/target`
+  const root = `${__dirname}/../..`
+  const templateTargetPath = `${root}/templates/target`
   const targetPath = `${resolve()}/dist`
   
   // check path
@@ -28,24 +29,24 @@ const sourcePath: string = `${commander.args[0]}`
   await insertToApp(catalogs, sourcePath, config)
   
   Log.time.start()
+  if (File.exists(templateTargetPath)) {
+    await File.exec(`rm -rf ${templateTargetPath}`)
+    await File.exec(`mkdir ${templateTargetPath}`)
+  }
   await checkTheme(config)
   await copyTheme(config)
   Log.time.over('generative theme')
   
   Log.time.start()
-  if (File.exists(templateTargetPath)) {
-    await File.spawnSync('rm', ['-rf', templateTargetPath])
-    await File.spawnSync('mkdir', [templateTargetPath])
-  }
-  await File.spawnSync('./node_modules/.bin/webpack', ['--config', './build/webpack.app.prod.js'])
+  await File.exec(`cd ${root} && ./node_modules/.bin/webpack --config ./build/webpack.app.prod.js`)
   Log.time.over('build website')
   
   Log.time.start()
-  if (!await File.exists(targetPath)) {
-    await File.spawnSync('mkdir', [targetPath])
+  if (await File.exists(targetPath)) {
+    await File.exec(`rm -rf ${targetPath}`)
   }
   // move to user dir
-  // await File.spawnSync('mv', ['-f', `${__dirname}/../../templates/target/`, resolve(`${targetPath}/docs`)])
+  await File.exec(`mv ${templateTargetPath}/ ${targetPath}/`)
   Log.time.over('clear up')
 })()
 
