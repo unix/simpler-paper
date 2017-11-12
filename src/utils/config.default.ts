@@ -4,7 +4,6 @@ export type Config = {
   title: string,
   minimap: boolean,
   backToTop: boolean,
-  nofollow: boolean,
   docPath: string,
   theme: string,
   __user_source_path?: string,
@@ -24,5 +23,4 @@ export const defaultConfig: Config = {
   theme: 'default',
   minimap: false,
   backToTop: false,
-  nofollow: false,
 }
