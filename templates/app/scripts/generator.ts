@@ -43,6 +43,7 @@ const makeTitle = (config: Config): HTMLElement => {
 export const side = async(catalogs: Catalog[], config: Config): Promise<HTMLElement[]> => {
   const title: HTMLElement = makeTitle(config)
   const list: HTMLElement = await makeList(catalogs, config.__user_source_path, document)
+  list.classList.add('side-list')
   return [title, list]
 }
 
