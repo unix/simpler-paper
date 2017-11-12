@@ -1,4 +1,5 @@
 import { Catalog, Config } from '../../../src/utils/config.default'
+import HTML = marked.Tokens.HTML
 
 const saveToDefaultRouter = (link: string) => {
   if (window.__paper.router.default) return
@@ -32,8 +33,17 @@ const makeList = async(catalogs: Catalog[], path, d: Document) => {
   return ul
 }
 
-export const side = async(catalogs: Catalog[], config: Config): Promise<HTMLElement> => {
-  return await makeList(catalogs, config.__user_source_path, document)
+const makeTitle = (config: Config): HTMLElement => {
+  const title: HTMLElement = document.createElement('div')
+  title.classList.add('.side-title')
+  title.innerHTML = `<h2>${config.title}</h2>`
+  return title
+}
+
+export const side = async(catalogs: Catalog[], config: Config): Promise<HTMLElement[]> => {
+  const title: HTMLElement = makeTitle(config)
+  const list: HTMLElement = await makeList(catalogs, config.__user_source_path, document)
+  return [title, list]
 }
 
 
