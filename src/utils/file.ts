@@ -24,4 +24,5 @@ export default {
   exists: noErrorPromisify(fs.exists),
   stat: promisify(fs.stat),
   spawnSync: childProcess.spawnSync,
+  exec: promisify(childProcess.exec),
 }
