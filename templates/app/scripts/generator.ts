@@ -50,12 +50,21 @@ export const side = async(catalogs: Catalog[], config: Config): Promise<HTMLElem
 const initSubList = async () => {
   const containers: NodeListOf<Element> = document.querySelectorAll('.sub-list-container')
   const subList: NodeListOf<Element> = document.querySelectorAll('.sub-list')
+  const subListArr: Element[] = Array.from(subList)
+  let baseHeight: number = 37
+  subListArr.some(sub => {
+    const li: HTMLElement = sub.querySelector('li')
+    if (li && li.offsetHeight) {
+      baseHeight = li.offsetHeight
+    }
+    return !!li
+  })
   
   // click directory
   const handle: Function = (event: Event, container: Element): void => {
     const getUlRealHeight: Function = (ul: HTMLElement): number => {
       const children: NodeListOf<Element> = ul.querySelectorAll('li')
-      return (Array.from(children).length || 0) * 40
+      return (Array.from(children).length || 0) * baseHeight
     }
     const list: HTMLElement = container.querySelector('.sub-list')
     const height: number = getUlRealHeight(list)
@@ -84,7 +93,7 @@ const initSubList = async () => {
   Array.from(containers).forEach(con => {
     con.addEventListener('click', (event: Event) => handle(event, con))
   })
-  Array.from(subList).forEach(sub => {
+  subListArr.forEach(sub => {
     sub.addEventListener('click', (event: Event) => event.stopPropagation())
   })
 }
