@@ -1,7 +1,6 @@
 const webpack = require('webpack')
 const path = require('path')
 const webpackMerge = require('webpack-merge')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const baseConfig = require('./webpack.app')
 
 module.exports = webpackMerge(baseConfig, {
@@ -20,8 +19,6 @@ module.exports = webpackMerge(baseConfig, {
       mangle: { keep_fnames: true },
       sourceMap: false,
     }),
-    
-    new ExtractTextPlugin('[name].[hash].css'),
     
     new webpack.LoaderOptionsPlugin({
       htmlLoader: { minimize: true },

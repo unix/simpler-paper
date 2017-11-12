@@ -2,7 +2,6 @@ const path = require('path')
 const lintConfig = require('../tslint.json')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -61,14 +60,6 @@ module.exports = {
       {
         test: /\.(woff|svg|eot|ttf)\??.*$/,
         loader: 'url-loader?name=fonts/[name].[ext]',
-      },
-      {
-        test: /\.css$/,
-        // loader: 'css-loader',
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: 'css-loader',
-        }),
       },
     ],
   },
