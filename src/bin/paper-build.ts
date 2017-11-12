@@ -13,6 +13,7 @@ commander
 const sourcePath: string = `${commander.args[0]}`
 
 ;(async() => {
+  const templateTargetPath = `${__dirname}/../../templates/target`
   const targetPath = `${resolve()}/dist`
   
   // check path
@@ -32,6 +33,10 @@ const sourcePath: string = `${commander.args[0]}`
   Log.time.over('generative theme')
   
   Log.time.start()
+  if (File.exists(templateTargetPath)) {
+    await File.spawnSync('rm', ['-rf', templateTargetPath])
+    await File.spawnSync('mkdir', [templateTargetPath])
+  }
   await File.spawnSync('./node_modules/.bin/webpack', ['--config', './build/webpack.app.prod.js'])
   Log.time.over('build website')
   
