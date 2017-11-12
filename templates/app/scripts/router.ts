@@ -4,6 +4,8 @@ export class Router {
   
   private slotElement: HTMLElement
   private docPath: string
+  private links: any[] = []
+  private lastLink: HTMLElement
   
   static removeHashTag(hash: string = ''): string {
     if (!hash.startsWith('#')) return hash
@@ -22,6 +24,7 @@ export class Router {
   constructor(slotElement: HTMLElement, docPath: string = '/') {
     this.slotElement = slotElement
     this.docPath = docPath
+    this.initList()
   }
   
   listen(): void {
@@ -29,8 +32,29 @@ export class Router {
     this._parseHash()
   }
   
+  private initList(): void {
+    const sideList: HTMLElement = document.querySelector('.side-list')
+    const links: NodeListOf<Element> = sideList.querySelectorAll('a')
+    Array.from(links).forEach(link => {
+      this.links.push({
+        el: link,
+        href: link.getAttribute('href'),
+      })
+    })
+  }
+  
+  private toggleList(hash: string): void {
+    const link = this.links.find(link => link.href === `#${hash}`)
+    if (!link) return
+    this.lastLink && this.lastLink.parentElement.classList.remove('active')
+    link.el.parentElement.classList.add('active')
+    this.lastLink = link.el
+  }
+  
   private _parseHash(): void {
     const hash: string = Router.removeHashTag(window.location.hash)
+    this.toggleList(hash)
+    
     let path: string = this.docPath + hash
     
     // default router path
