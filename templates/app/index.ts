@@ -11,7 +11,8 @@ const docker: Function = async(w: Window, d: Document): Promise<void> => {
   
   const sides: HTMLElement[] = await Generator.side(catalogs, config)
   sides.forEach(element => side.appendChild(element))
-  await Generator.event()
+  
+  await Generator.event(config)
   
   new Router(d.getElementById('container'), config.docPath)
     .listen()
