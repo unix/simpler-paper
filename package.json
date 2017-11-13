@@ -1,6 +1,6 @@
 {
   "name": "simpler-paper",
-  "version": "0.1.0-alpha.2",
+  "version": "0.1.0-alpha.3",
   "description": "",
   "main": "dist/bin/paper.js",
   "scripts": {
@@ -28,6 +28,8 @@
   "files": [
     "LICENSE",
     "READNE.md",
+    "tsconfig.json",
+    "tslint.json",
     "dist/",
     "build/",
     "templates/"
