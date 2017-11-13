@@ -1,9 +1,10 @@
 import * as hljs from 'highlight.js'
+import { EventHub } from './event'
 
 export class Highlight {
   
-  constructor(eventHub: any) {
-    eventHub.listen('container-change', this.handle)
+  constructor(eventHub: EventHub) {
+    eventHub.listen('container-changed', this.handle)
   }
   
   handle(): void {

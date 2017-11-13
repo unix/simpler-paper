@@ -1,5 +1,7 @@
 import { Catalog, Config } from '../../../src/utils/config.default'
 import { BackToTop } from './backToTop'
+import { Highlight } from './highlight'
+import { Indicator } from './indicator'
 
 const saveToDefaultRouter = (link: string) => {
   if (window.__paper.router.default) return
@@ -99,10 +101,13 @@ const initSubList = async () => {
   })
 }
 
-export const event = async(config: Config): Promise<void> => {
+export const event = async(config: Config, eventHub: any): Promise<void> => {
   await initSubList()
-  if (config.backToTop) {
-    new BackToTop()
-  }
+  
+  config.backToTop && new BackToTop()
+  config.highlight && new Highlight(eventHub)
+  config.indicator && new Indicator(eventHub)
+  
+  
   
 }
