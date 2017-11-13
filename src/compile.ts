@@ -1,6 +1,5 @@
 import File from './utils/file'
 import Log from './utils/log'
-import { Config, Catalog } from './utils/config.default'
 import * as marked from 'marked'
 import { Stats } from 'fs'
 const __temp = `${__dirname}/../../templates/temp`

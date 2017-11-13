@@ -18,9 +18,7 @@ module.exports = (async() => {
     pre, { [entryName(next)]: path.resolve(__dirname, `../src/bin/${next}`) }), {})
   
   return {
-    entry: Object.assign({
-      commander: path.join(__dirname, '../src/index.ts'),
-    }, entriesMap),
+    entry: entriesMap,
   
     externals: externals,
   

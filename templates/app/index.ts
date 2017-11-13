@@ -1,5 +1,3 @@
-import { Catalog, Config } from '../../src/utils/config.default'
-
 const config: Config = require('../temp/paper.config.json')
 const catalogs: Catalog[] = require('../temp/catalogs.json')
 import * as Generator from './scripts/generator'

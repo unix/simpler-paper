@@ -1,7 +1,7 @@
 import * as commander from 'commander'
 import { checkSource, checkConfig, checkTheme } from '../utils/check'
 import { compileToHtml, insertToApp, copyTheme, copyHighlight } from '../compile'
-import { defaultConfig, Config, Catalog } from '../utils/config.default'
+import { defaultConfig } from '../utils/config.default'
 import File from '../utils/file'
 import Log from '../utils/log'
 import { resolve } from 'path'

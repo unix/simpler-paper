@@ -1,4 +1,3 @@
-import { Catalog, Config } from '../../../src/utils/config.default'
 import { BackToTop } from './backToTop'
 import { Highlight } from './highlight'
 import { Indicator } from './indicator'
