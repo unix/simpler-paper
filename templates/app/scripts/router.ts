@@ -54,6 +54,8 @@ export class Router {
   }
   
   private _parseHash(): void {
+    this.eventHub.dispath('container-will-change')
+    
     const hash: string = Router.removeHashTag(window.location.hash)
     this.toggleList(hash)
     
@@ -76,6 +78,6 @@ export class Router {
     this.slotElement.appendChild(_div)
     
     // emit router event
-    this.eventHub.dispath('container-change')
+    this.eventHub.dispath('container-changed')
   }
 }
