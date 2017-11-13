@@ -5,9 +5,7 @@
   "main": "dist/bin/paper.js",
   "scripts": {
     "start": "webpack --config ./build/webpack.config.js --progress --watch",
-    "build": "rm -rf ./dist && webpack --config ./build/webpack.config.js --progress",
-    "app": "env DEBUG=true webpack-dev-server --config build/webpack.app.dev.js --no-inline --progress --port 3001",
-    "app:build": "webpack --config build/webpack.app.prod.js"
+    "build": "rm -rf ./dist && webpack --config ./build/webpack.config.js --progress"
   },
   "bin": {
     "paper": "dist/bin/paper.js"
@@ -28,10 +26,7 @@
   "files": [
     "LICENSE",
     "READNE.md",
-    "tsconfig.json",
-    "tslint.json",
     "dist/",
-    "src/",
     "build/",
     "templates/"
   ],
@@ -46,12 +41,14 @@
     "chalk": "^2.3.0",
     "commander": "^2.11.0",
     "copy-webpack-plugin": "^4.2.0",
+    "express": "^4.16.2",
     "highlight.js": "^9.12.0",
     "html-loader": "^0.5.1",
     "html-webpack-plugin": "^2.30.1",
     "inquirer": "^3.3.0",
     "marked": "^0.3.6",
     "ora": "^1.3.0",
+    "serve-static": "^1.13.1",
     "simpler-paper-themes": "^0.1.3",
     "ts-loader": "^3.1.1",
     "tslint": "^5.8.0",

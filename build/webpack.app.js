@@ -18,7 +18,7 @@ module.exports = {
   target: 'web',
   
   resolve: {
-    extensions: [ '.ts', '.js', '.html', '.png', '.css' ],
+    extensions: [ '.ts', '.js', '.html', '.png', '.css', '.json' ],
     modules: [
       path.resolve(__dirname, '../node_modules'),
     ],
@@ -66,7 +66,7 @@ module.exports = {
   
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../templates/app/index.html'),
+      template: path.resolve(__dirname, '../templates/target/index.html'),
     }),
     new CopyWebpackPlugin([{
       from: path.resolve(__dirname, '../templates/temp'),

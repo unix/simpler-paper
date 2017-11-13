@@ -1,11 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["es2015"],
+    "lib": ["es2015", "dom"],
     "target": "es5",
     "declaration": true,
     "declarationDir": "./@types",
     "sourceMap": true,
-    "moduleResolution": "node",
     "removeComments": true,
     "noImplicitAny": false,
     "preserveConstEnums": true,
@@ -13,7 +12,6 @@
     "emitDecoratorMetadata": true,
     "typeRoots": [
       "node_modules/@types",
-      "templates/app/typings",
       "typings"
     ]
   },

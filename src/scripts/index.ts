@@ -1,9 +1,9 @@
-const config: Config = require('../temp/paper.config.json')
-const catalogs: Catalog[] = require('../temp/catalogs.json')
-import * as Generator from './scripts/generator'
-import { init } from './scripts/utils'
-import { Router } from './scripts/router'
-import { EventHub } from './scripts/event'
+const config: Config = window.__config
+const catalogs: Catalog[] = window.__catalogs
+import * as Generator from './generator'
+import { init } from './utils'
+import { Router } from './router'
+import { EventHub } from './event'
 
 const docker: Function = async(w: Window, d: Document): Promise<void> => {
   const eventHub = new EventHub()

@@ -1,6 +1,7 @@
 const path = require('path')
 const fs = require('fs')
 const webpack = require('webpack')
+const webpackMerge = require('webpack-merge')
 const lintConfig = require('../tslint.json')
 const promisify = require('util').promisify
 const readDir = promisify(fs.readdir)
@@ -17,11 +18,7 @@ module.exports = (async() => {
   const entriesMap = entries.reduce((pre, next) => Object.assign({},
     pre, { [entryName(next)]: path.resolve(__dirname, `../src/bin/${next}`) }), {})
   
-  return {
-    entry: entriesMap,
-  
-    externals: externals,
-  
+  const base = {
     output: {
       path: path.resolve(__dirname, '../dist'),
       filename: '[name].js',
@@ -69,8 +66,22 @@ module.exports = (async() => {
       new webpack.BannerPlugin({
         raw: true,
         banner: '#!/usr/bin/env node',
+        exclude: 'index.js',
       }),
     ],
   }
+  
+  const server = {
+    entry: entriesMap,
+    externals: externals,
+    target: 'node',
+  }
+  const client = {
+    entry: {
+      index: path.resolve(__dirname, '../src/scripts/index.ts'),
+    },
+    target: 'web',
+  }
+  return [webpackMerge(base, server), webpackMerge(base, client)]
 })()
 
