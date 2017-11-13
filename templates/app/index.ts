@@ -6,7 +6,6 @@ import * as Generator from './scripts/generator'
 import { init } from './scripts/utils'
 import { Router } from './scripts/router'
 import { EventHub } from './scripts/event'
-import { Highlight } from './scripts/highlight'
 
 const docker: Function = async(w: Window, d: Document): Promise<void> => {
   const eventHub = new EventHub()
@@ -15,9 +14,8 @@ const docker: Function = async(w: Window, d: Document): Promise<void> => {
   const sides: HTMLElement[] = await Generator.side(catalogs, config)
   sides.forEach(element => side.appendChild(element))
   
-  await Generator.event(config)
+  await Generator.event(config, eventHub)
   
-  new Highlight(eventHub)
   new Router(d.getElementById('container'), config.docPath)
     .listen(eventHub)
 }
