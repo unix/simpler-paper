@@ -8,6 +8,7 @@ export type Config = {
   theme: string,
   highlight: boolean,
   highlightTheme?: string,
+  indicator: true,
   __user_source_path?: string,
 }
 
@@ -27,4 +28,5 @@ export const defaultConfig: Config = {
   highlight: true,
   highlightTheme: 'default',
   backToTop: false,
+  indicator: true,
 }

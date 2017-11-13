@@ -14,7 +14,7 @@ export class BackToTop {
   }
   
   private makeBackButtno(): HTMLElement {
-    const _div = document.createElement('div')
+    const _div: HTMLElement = document.createElement('div')
     _div.classList.add('back-to-top')
     _div.innerHTML = `<div class="back-to-top-container"><span>Back</span></div>`
     return _div
