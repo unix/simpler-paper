@@ -52,11 +52,11 @@ const sourcePath: string = `${commander.args[0]}`
   
   
   Log.time.start()
-  // if (await File.exists(targetPath)) {
-  //   await File.exec(`rm -rf ${targetPath}`)
-  // }
+  if (await File.exists(targetPath)) {
+    await File.exec(`rm -rf ${targetPath}`)
+  }
   // move to user dir
-  // await File.exec(`mv ${templateTargetPath}/ ${targetPath}/`)
+  await File.exec(`mv ${templateTargetPath}/ ${targetPath}/`)
   Log.time.over('clear up')
 })()
 
