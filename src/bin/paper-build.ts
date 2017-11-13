@@ -39,7 +39,7 @@ const sourcePath: string = `${commander.args[0]}`
   Log.time.over('generative theme')
   
   Log.time.start()
-  await File.exec(`cd ${root} && ./node_modules/.bin/webpack --config ./build/webpack.app.prod.js`)
+  await File.exec(`cd ${root} && ./node_modules/webpack/bin/webpack.js --config ./build/webpack.app.prod.js`)
   Log.time.over('build website')
   
   Log.time.start()
