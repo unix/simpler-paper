@@ -6,6 +6,8 @@ export type Config = {
   backToTop: boolean,
   docPath: string,
   theme: string,
+  highlight: boolean,
+  highlightTheme?: string,
   __user_source_path?: string,
 }
 
@@ -22,5 +24,7 @@ export const defaultConfig: Config = {
   docPath: '/',
   theme: 'default',
   minimap: false,
+  highlight: true,
+  highlightTheme: 'default',
   backToTop: false,
 }

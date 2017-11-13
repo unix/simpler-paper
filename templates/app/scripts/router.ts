@@ -6,6 +6,7 @@ export class Router {
   private docPath: string
   private links: any[] = []
   private lastLink: HTMLElement
+  private eventHub: any
   
   static removeHashTag(hash: string = ''): string {
     if (!hash.startsWith('#')) return hash
@@ -27,7 +28,8 @@ export class Router {
     this.initList()
   }
   
-  listen(): void {
+  listen(eventHub: any): void {
+    this.eventHub = eventHub
     window.onhashchange = () => this._parseHash()
     this._parseHash()
   }
@@ -72,5 +74,8 @@ export class Router {
     _div.innerHTML = await res.text()
     this.slotElement.innerHTML = ''
     this.slotElement.appendChild(_div)
+    
+    // emit router event
+    this.eventHub.dispath('container-change')
   }
 }

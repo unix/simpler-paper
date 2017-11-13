@@ -120,3 +120,13 @@ export const copyTheme = async(config: Config): Promise<void> => {
   await File.writeFile(`${__temp}/index.css`, themeStr)
 }
 
+export const copyHighlight = async(config: Config): Promise<void> => {
+  const dontCopy: boolean = !config.highlight
+  if (dontCopy) return
+  const theme = config.highlightTheme || 'default'
+  const p: string = `${__dirname}/../../node_modules/highlight.js/styles/${theme}.css`
+  if (!File.exists(p)) return
+  const themeStr: string = await File.readFile(p, 'utf-8')
+  await File.writeFile(`${__temp}/highlight.css`, themeStr)
+}
+

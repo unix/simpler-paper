@@ -1,6 +1,6 @@
 import * as commander from 'commander'
 import { checkSource, checkConfig, checkTheme } from '../utils/check'
-import { compileToHtml, insertToApp, copyTheme } from '../compile'
+import { compileToHtml, insertToApp, copyTheme, copyHighlight } from '../compile'
 import { defaultConfig, Config, Catalog } from '../utils/config.default'
 import File from '../utils/file'
 import Log from '../utils/log'
@@ -35,6 +35,7 @@ const sourcePath: string = `${commander.args[0]}`
   }
   await checkTheme(config)
   await copyTheme(config)
+  await copyHighlight(config)
   Log.time.over('generative theme')
   
   Log.time.start()
@@ -42,11 +43,11 @@ const sourcePath: string = `${commander.args[0]}`
   Log.time.over('build website')
   
   Log.time.start()
-  if (await File.exists(targetPath)) {
-    await File.exec(`rm -rf ${targetPath}`)
-  }
+  // if (await File.exists(targetPath)) {
+  //   await File.exec(`rm -rf ${targetPath}`)
+  // }
   // move to user dir
-  await File.exec(`mv ${templateTargetPath}/ ${targetPath}/`)
+  // await File.exec(`mv ${templateTargetPath}/ ${targetPath}/`)
   Log.time.over('clear up')
 })()
 
