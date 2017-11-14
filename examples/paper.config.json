@@ -5,6 +5,6 @@
   "title": "Simpler Paper",
   "minimap": true,
   "backToTop": true,
-  "output": "dist",
+  "output": "docs",
   "docPath": "/"
 }
