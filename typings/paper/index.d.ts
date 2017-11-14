@@ -6,6 +6,7 @@ interface Config {
   backToTop: boolean,
   docPath: string,
   theme: string,
+  output: string,
   highlight: boolean,
   highlightTheme?: string,
   indicator: true,
