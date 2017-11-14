@@ -104,9 +104,7 @@ export const event = async(config: Config, eventHub: any): Promise<void> => {
   await initSubList()
   
   config.backToTop && new BackToTop()
-  config.highlight && new Highlight(eventHub)
   config.indicator && new Indicator(eventHub)
-  
-  
+  new Highlight(eventHub)
   
 }
