@@ -16,7 +16,6 @@ const sourcePath: string = `${commander.args[0]}`
   const root = `${__dirname}/../..`
   const templateTargetPath = `${root}/templates/target`
   const templateTempPath = `${root}/templates/temp`
-  const targetPath = `${resolve()}/dist`
   
   // check path
   if (!await checkSource(sourcePath)) return
@@ -25,7 +24,7 @@ const sourcePath: string = `${commander.args[0]}`
     await checkConfig(sourcePath),
     { __user_source_path: sourcePath },
   )
-  
+  const targetPath = `${resolve()}/${config.output}`
   const catalogs: Catalog[] = await compileToHtml(sourcePath, config)
   await insertToApp(catalogs, sourcePath, config)
   
@@ -56,7 +55,7 @@ const sourcePath: string = `${commander.args[0]}`
     await File.exec(`rm -rf ${targetPath}`)
   }
   // move to user dir
-  await File.exec(`mv ${templateTargetPath}/ ${targetPath}/`)
+  await File.exec(`cp -R ${templateTargetPath}/ ${targetPath}/`)
   Log.time.over('clear up')
 })()
 
