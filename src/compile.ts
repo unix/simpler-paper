@@ -2,6 +2,7 @@ import File from './utils/file'
 import Log from './utils/log'
 import * as marked from 'marked'
 import { Stats } from 'fs'
+import { findHighlight } from './utils/highlight'
 const __app = `${__dirname}/../../templates/app`
 const __target = `${__dirname}/../../templates/target`
 const __temp = `${__dirname}/../../templates/temp`
@@ -108,17 +109,8 @@ export const copyTheme = async(config: Config): Promise<void> => {
   await File.writeFile(`${__temp}/index.css`, themeStr)
 }
 
-export const copyHighlight = async(config: Config): Promise<void> => {
-  const dontCopy: boolean = !config.highlight
-  if (dontCopy) return
-  const theme = config.highlightTheme || 'default'
-  const p: string = `${__dirname}/../../node_modules/highlight.js/styles/${theme}.css`
-  if (!File.exists(p)) return
-  const themeStr: string = await File.readFile(p, 'utf-8')
-  await File.writeFile(`${__temp}/highlight.css`, themeStr)
-}
-
-export const copyInlineHtml = async(config: Config, catalogs: Catalog[]): Promise<void> => {
+export const copyInlineHtml = async(config: Config, catalogs: Catalog[], sourcePath: string)
+: Promise<void> => {
   const index: string = await File.readFile(`${__app}/index.html`, 'utf-8')
   const indexs: string[] = index.split('</body>')
   let inlineHtml: string = `
@@ -126,8 +118,11 @@ export const copyInlineHtml = async(config: Config, catalogs: Catalog[]): Promis
     <script>window.__catalogs = ${JSON.stringify(catalogs)}</script>
     <script src="./index.js"></script>`
   const foot = `</body>${indexs.pop()}`
-  inlineHtml = indexs.reduce((pre, next) => pre + next, '') + inlineHtml + foot
-  await File.writeFile(`${__target}/index.html`, inlineHtml, 'utf-8')
   await File.exec(`cp ${__dirname}/../index.js ${__target}/index.js`)
   
+  const hljs: string = await findHighlight(sourcePath)
+  inlineHtml = hljs + inlineHtml
+  
+  inlineHtml = indexs.reduce((pre, next) => pre + next, '') + inlineHtml + foot
+  await File.writeFile(`${__target}/index.html`, inlineHtml, 'utf-8')
 }

@@ -1,6 +1,6 @@
 import * as commander from 'commander'
 import { checkSource, checkConfig, checkTheme } from '../utils/check'
-import { compileToHtml, insertToApp, copyTheme, copyHighlight, copyInlineHtml } from '../compile'
+import { compileToHtml, insertToApp, copyTheme, copyInlineHtml } from '../compile'
 import { defaultConfig } from '../utils/config.default'
 import File from '../utils/file'
 import Log from '../utils/log'
@@ -29,16 +29,18 @@ const sourcePath: string = `${commander.args[0]}`
   await insertToApp(catalogs, sourcePath, config)
   
   Log.time.start()
-  // clear target
+  // clear up
+  // reset target
   if (File.exists(templateTargetPath)) {
     await File.exec(`rm -rf ${templateTargetPath}`)
     await File.exec(`mkdir ${templateTargetPath}`)
   }
-  // copy files to target
+  
+  // copy themes to target
   await checkTheme(config)
   await copyTheme(config)
-  await copyHighlight(config)
   Log.time.over('generative theme')
+  
   
   // copy cache to target, clear cache dir
   if (await File.exists(templateTargetPath)) {
@@ -46,15 +48,16 @@ const sourcePath: string = `${commander.args[0]}`
   }
   await File.exec(`cp -R ${templateTempPath}/ ${templateTargetPath}`)
   await File.exec(`rm -rf ${templateTempPath}/`)
-  // copy run time script and index.html
-  await copyInlineHtml(config, catalogs)
+  
+  // copy run time script and make index.html
+  await copyInlineHtml(config, catalogs, sourcePath)
   
   
+  // output to user dir
   Log.time.start()
   if (await File.exists(targetPath)) {
     await File.exec(`rm -rf ${targetPath}`)
   }
-  // move to user dir
   await File.exec(`cp -R ${templateTargetPath}/ ${targetPath}/`)
   Log.time.over('clear up')
 })()

@@ -1,4 +1,3 @@
-import * as hljs from 'highlight.js'
 import { EventHub } from './event'
 
 export class Highlight {
@@ -8,9 +7,10 @@ export class Highlight {
   }
   
   handle(): void {
+    if (!window.hljs) return
     const blocks: NodeListOf<Element> = document.querySelectorAll('pre')
     Array.from(blocks).forEach(code => {
-      hljs.highlightBlock(code)
+      window.hljs.highlightBlock(code)
     })
   }
   
