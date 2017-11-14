@@ -12,6 +12,10 @@ npm i -g simpler-paper
 # ex:
 paper build ./docs
 ```
+3. preview:
+```bash
+paper server
+```
 
 ### Documentation
 > you can create a json file in the document directory.
@@ -36,7 +40,7 @@ paper build ./docs
   "backToTop": true,
 
   // document page path, default: "/"
-  "docPath": "/static/"
+  "docPath": "/"
 }
 ```
 
