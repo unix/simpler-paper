@@ -7,8 +7,6 @@ interface Config {
   docPath: string,
   theme: string,
   output: string,
-  highlight: boolean,
-  highlightTheme?: string,
   indicator: true,
   __user_source_path?: string,
 }
@@ -33,4 +31,5 @@ interface Window {
   __paper?: Paper,
   __config?: Config,
   __catalogs?: Catalog[],
+  hljs?: any,
 }
