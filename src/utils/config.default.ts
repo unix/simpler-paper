@@ -7,8 +7,6 @@ export const defaultConfig: Config = {
   output: 'dist',
   theme: 'default',
   minimap: false,
-  highlight: true,
-  highlightTheme: 'default',
   backToTop: false,
   indicator: true,
 }
