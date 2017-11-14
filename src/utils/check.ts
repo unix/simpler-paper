@@ -1,6 +1,5 @@
 import File from './file'
 import Log from './log'
-import { Config } from './config.default'
 
 export const checkSource = async(path: string = ''): Promise<boolean> => {
   const pass: boolean = await File.exists(path)

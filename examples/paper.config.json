@@ -6,5 +6,5 @@
   "minimap": true,
   "backToTop": true,
   "output": "dist",
-  "docPath": "/static/"
+  "docPath": "/"
 }

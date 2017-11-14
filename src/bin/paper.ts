@@ -12,6 +12,7 @@ commander
   .version(version)
   .usage('<command> [options]')
   .command('build', 'generate document')
+  .command('server', 'lift the document on the local server')
   .parse(process.argv)
 
   

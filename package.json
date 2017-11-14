@@ -1,13 +1,11 @@
 {
   "name": "simpler-paper",
-  "version": "0.0.1",
+  "version": "0.1.1-alpha.1",
   "description": "",
   "main": "dist/bin/paper.js",
   "scripts": {
     "start": "webpack --config ./build/webpack.config.js --progress --watch",
-    "build": "rm -rf ./dist && webpack --config ./build/webpack.config.js --progress",
-    "app": "env DEBUG=true webpack-dev-server --config build/webpack.app.dev.js --no-inline --progress --port 3001",
-    "app:build": "webpack --config build/webpack.app.prod.js"
+    "build": "rm -rf ./dist && webpack --config ./build/webpack.config.js --progress"
   },
   "bin": {
     "paper": "dist/bin/paper.js"
@@ -27,6 +25,7 @@
   },
   "files": [
     "LICENSE",
+    "READNE.md",
     "dist/",
     "templates/"
   ],
@@ -39,23 +38,21 @@
     "ts-loader": "^3.1.1",
     "tslint": "^5.8.0",
     "tslint-loader": "^3.5.3",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4",
     "typescript": "^2.6.1",
-    "webpack": "^3.8.1"
+    "webpack-merge": "^4.1.1"
   },
   "dependencies": {
     "chalk": "^2.3.0",
     "commander": "^2.11.0",
-    "copy-webpack-plugin": "^4.2.0",
+    "express": "^4.16.2",
     "highlight.js": "^9.12.0",
-    "html-loader": "^0.5.1",
-    "html-webpack-plugin": "^2.30.1",
     "inquirer": "^3.3.0",
     "marked": "^0.3.6",
     "ora": "^1.3.0",
-    "simpler-paper-themes": "^0.1.2",
-    "url-loader": "^0.6.2",
-    "util.promisify": "^1.0.0",
-    "webpack-dev-server": "^2.9.4",
-    "webpack-merge": "^4.1.1"
+    "serve-static": "^1.13.1",
+    "simpler-paper-themes": "^0.1.3",
+    "util.promisify": "^1.0.0"
   }
 }

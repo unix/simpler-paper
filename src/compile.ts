@@ -1,8 +1,9 @@
 import File from './utils/file'
 import Log from './utils/log'
-import { Config, Catalog } from './utils/config.default'
 import * as marked from 'marked'
 import { Stats } from 'fs'
+const __app = `${__dirname}/../../templates/app`
+const __target = `${__dirname}/../../templates/target`
 const __temp = `${__dirname}/../../templates/temp`
 const USER_PATH = process.cwd()
 
@@ -65,14 +66,6 @@ export const compileToHtml = async(path: string, config: Config) => {
 }
 
 
-const copyCatalogsFile = async(catalogs: Catalog[]): Promise<void> => {
-  await File.writeFile(`${__temp}/catalogs.json`, JSON.stringify(catalogs))
-}
-
-const copyConfigFile = async(config: Config): Promise<void> => {
-  await File.writeFile(`${__temp}/paper.config.json`, JSON.stringify(config))
-}
-
 const makeTargetPath = (path: string, sourcePath: string): string => {
   const sourceFullPath: string = path.split(sourcePath).reverse()[0]
   return `${__temp}/${sourceFullPath}`
@@ -106,11 +99,6 @@ export const insertToApp = async(catalogs: Catalog[], sourcePath: string, config
   await File.spawnSync('mkdir', [__temp])
   await generatePages(catalogs, sourcePath)
   Log.time.over('compile to html')
-  
-  Log.time.start()
-  await copyConfigFile(config)
-  await copyCatalogsFile(catalogs)
-  Log.time.over('copy config')
 }
 
 export const copyTheme = async(config: Config): Promise<void> => {
@@ -130,3 +118,16 @@ export const copyHighlight = async(config: Config): Promise<void> => {
   await File.writeFile(`${__temp}/highlight.css`, themeStr)
 }
 
+export const copyInlineHtml = async(config: Config, catalogs: Catalog[]): Promise<void> => {
+  const index: string = await File.readFile(`${__app}/index.html`, 'utf-8')
+  const indexs: string[] = index.split('</body>')
+  let inlineHtml: string = `
+    <script>window.__config = ${JSON.stringify(config)}</script>
+    <script>window.__catalogs = ${JSON.stringify(catalogs)}</script>
+    <script src="./index.js"></script>`
+  const foot = `</body>${indexs.pop()}`
+  inlineHtml = indexs.reduce((pre, next) => pre + next, '') + inlineHtml + foot
+  await File.writeFile(`${__target}/index.html`, inlineHtml, 'utf-8')
+  await File.exec(`cp ${__dirname}/../index.js ${__target}/index.js`)
+  
+}
