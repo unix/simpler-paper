@@ -68,7 +68,7 @@ export const compileToHtml = async(path: string, config: Config) => {
 
 const makeTargetPath = (path: string, sourcePath: string): string => {
   const sourceFullPath: string = path.split(sourcePath).reverse()[0]
-  return `${__temp}/${sourceFullPath}`
+  return `${__temp}/static/${sourceFullPath}`
 }
 
 const createHtml = async(source: string, target: string): Promise<void> => {
@@ -78,7 +78,6 @@ const createHtml = async(source: string, target: string): Promise<void> => {
 }
 
 const generatePages = async(catalogs: Catalog[], sourcePath: string): Promise<void> => {
-  
   for (const unit of catalogs) {
     const p: string = makeTargetPath(unit.fileName, sourcePath)
     if (unit.children && unit.children.length > 0) {
@@ -96,7 +95,8 @@ export const insertToApp = async(catalogs: Catalog[], sourcePath: string, config
   Log.time.over('clear cache')
   
   Log.time.start()
-  await File.spawnSync('mkdir', [__temp])
+  await File.exec(`mkdir ${__temp}`)
+  await File.exec(`mkdir ${__temp}/static/`)
   await generatePages(catalogs, sourcePath)
   Log.time.over('compile to html')
 }
