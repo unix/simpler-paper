@@ -3,6 +3,8 @@ import * as Ora from 'ora'
 import { hrtime } from 'process'
 
 let startTime: [number, number]
+let ora: any
+let oraTask: string
 
 export default {
   sourceError: (path?: string) => {
@@ -20,14 +22,20 @@ export default {
   },
   
   time: {
-    start(): void {
+    start(task: string): void {
       startTime = hrtime()
+      ora = new Ora(task).start()
+      oraTask = task
     },
-    over(task: string): void {
+    over(success: boolean = true): void {
       const time: [number, number] = hrtime(startTime)
       const show: string = (time[1] / 1000000).toFixed(2)
-      console.log(' ')
-      new Ora().start().succeed(`${chalk.hex('#53BD38')(task)} ${chalk.hex('#44A6BE')(show + ' ms')}`)
+      if (!success) {
+        ora.fail(oraTask)
+        return process.exit(1)
+      }
+      ora.succeed(oraTask)
+      console.log(`  ${chalk.hex('#44A6BE')(show + ' ms')}\n`)
     },
   },
 }
