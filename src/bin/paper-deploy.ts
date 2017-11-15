@@ -11,7 +11,13 @@ commander
 
 const message = commander.args[0] || 'paper update'
 ;(async() => {
+  const pagesDir = `${__dirname}/../../node_modules/gh-pages/`
+  const cachePath = `${process.cwd()}/.paper.deploy.cache`
   const __user = process.cwd()
+  const resetDir = async(path: string) => {
+    await File.exists(path) && await File.exec(`rm -rf ${path}`)
+  }
+  
   console.log(`deploy message: ${chalk.green(`${message}`)}`)
   if (!commander.args[0]) {
     console.log(`you can use ${chalk.green('[-m]')} to add information.\n`)
@@ -31,14 +37,26 @@ const message = commander.args[0] || 'paper update'
   Log.time.over()
   
   Log.time.start('deploy to github')
-  pages.publish(distPath, {
-    message,
-    branch: 'gh-pages',
-  }, err => {
-    if (err) {
-      console.log(chalk.red(`Error: ${err}`))
-      return Log.time.over(false)
-    }
-    Log.time.over()
-  })
+  try {
+    await resetDir(cachePath)
+    await File.exec(`mkdir ${cachePath}`)
+    await File.exec(`cp -R ${pagesDir} ${cachePath}/`)
+    await File.exec(`cd ${process.cwd()} && ${cachePath}/bin/gh-pages -d ${config.output} -m ${message}`)
+    await resetDir(cachePath)
+  } catch (e) {
+    await resetDir(cachePath)
+    console.log(`${String(e)}\n`)
+    Log.time.over(false)
+  }
+  Log.time.over()
+  // pages.publish(distPath, {
+  //   message,
+  //   branch: 'gh-pages',
+  // }, err => {
+  //   if (err) {
+  //     console.log(chalk.red(`Error: ${err}`))
+  //     return Log.time.over(false)
+  //   }
+  //   Log.time.over()
+  // })
 })()
