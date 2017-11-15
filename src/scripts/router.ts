@@ -7,6 +7,7 @@ export class Router {
   private links: any[] = []
   private lastLink: HTMLElement
   private eventHub: any
+  private origin: string
   
   static removeHashTag(hash: string = ''): string {
     if (!hash.startsWith('#')) return hash
@@ -25,6 +26,7 @@ export class Router {
   constructor(slotElement: HTMLElement, docPath: string = '/') {
     this.slotElement = slotElement
     this.docPath = docPath
+    this.origin = window.location.origin + window.location.pathname
     this.initList()
   }
   
@@ -66,7 +68,7 @@ export class Router {
       path += window.__paper.router.default
     }
     const htmlPath: string = Router.replaceSuffix(path)
-    this._loader(Router.removeSlash(htmlPath)).then()
+    this._loader(Router.removeSlash(this.origin + htmlPath)).then()
   }
   
   private async _loader(path: string): Promise<void> {
