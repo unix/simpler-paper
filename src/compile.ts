@@ -2,7 +2,7 @@ import File from './utils/file'
 import Log from './utils/log'
 import * as marked from 'marked'
 import { Stats } from 'fs'
-import { findHighlight } from './utils/highlight'
+import { appendHighlight, appendHighlightStyle } from './utils/highlight'
 const __app = `${__dirname}/../../templates/app`
 const __target = `${__dirname}/../../templates/target`
 const __temp = `${__dirname}/../../templates/temp`
@@ -93,9 +93,7 @@ const generatePages = async(catalogs: Catalog[], sourcePath: string): Promise<vo
 export const compileMarkdown = async(catalogs: Catalog[], sourcePath: string) => {
   Log.time.start()
   File.spawnSync('rm', ['-rf', __temp])
-  Log.time.over('clear cache')
   
-  Log.time.start()
   await File.exec(`mkdir ${__temp}`)
   await File.exec(`mkdir ${__temp}/static/`)
   await generatePages(catalogs, sourcePath)
@@ -112,16 +110,16 @@ export const copyTheme = async(config: Config): Promise<void> => {
 export const copyInlineHtml = async(config: Config, catalogs: Catalog[]): Promise<void> => {
   const index: string = await File.readFile(`${__app}/index.html`, 'utf-8')
   const indexs: string[] = index.split('</body>')
-  let inlineHtml: string = `
+  let scripts: string = `
     <script>window.__config = ${JSON.stringify(config)}</script>
     <script>window.__catalogs = ${JSON.stringify(catalogs)}</script>
     <script src="./index.js"></script>`
   const foot = `</body>${indexs.pop()}`
   await File.exec(`cp ${__dirname}/../index.js ${__target}/index.js`)
+  scripts = await appendHighlight(config.__user_source_path, scripts)
   
-  const hljs: string = await findHighlight(config.__user_source_path)
-  inlineHtml = hljs + inlineHtml
-  
-  inlineHtml = indexs.reduce((pre, next) => pre + next, '') + inlineHtml + foot
+  let inlineHtml: string = indexs.reduce((pre, next) => pre + next, '') + scripts + foot
+  inlineHtml = inlineHtml.replace('__TITLE__', config.title)
+  inlineHtml = appendHighlightStyle(inlineHtml)
   await File.writeFile(`${__target}/index.html`, inlineHtml, 'utf-8')
 }

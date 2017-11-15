@@ -7,7 +7,7 @@ interface Config {
   docPath: string,
   theme: string,
   output: string,
-  indicator: true,
+  indicator: boolean,
   __user_source_path?: string,
 }
 
