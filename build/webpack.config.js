@@ -68,6 +68,9 @@ module.exports = (async() => {
         banner: '#!/usr/bin/env node',
         exclude: 'index.js',
       }),
+      new webpack.optimize.UglifyJsPlugin({
+        compress: { warnings: false },
+      }),
     ],
   }
   
