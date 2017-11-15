@@ -1,5 +1,7 @@
+import { defaultConfig } from './config.default'
 import File from './file'
 import Log from './log'
+import { Stats } from 'fs'
 
 export const checkSource = async(path: string = ''): Promise<boolean> => {
   const pass: boolean = await File.exists(path)
@@ -32,6 +34,26 @@ export const checkTheme = async(config: Config): Promise<boolean> => {
   return true
 }
 
+export const findSource = async(userPath: string): Promise<string> => {
+  const files: string[] = await File.readdir(userPath)
+  let dir: string = ''
+  for (const f of files) {
+    const stat: Stats = await File.stat(`${userPath}/${f}`)
+    if (stat.isFile()) continue
+    if (await File.exists(`${userPath}/${f}/paper.config.json`)) {
+      dir = f
+      break
+    }
+  }
+  return dir
+}
 
-
-
+export const assignConfig = async(source: string): Promise<Config> => {
+  const userConfig: any = await checkConfig(source)
+  const config: Config = Object.assign({},
+    defaultConfig,
+    userConfig,
+    { __user_source_path: source },
+  )
+  return config
+}

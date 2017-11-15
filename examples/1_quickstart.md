@@ -9,14 +9,30 @@ run `npm install -g simpler-paper`
 
 
 ## Step 2. Build  
+create "paper.config.json" in project document directory.  
+Example:
+```html  
+
+-------------   project dir
+|--- build
+|--- dist
+|--- scripts
+|--- docs
+|    |--- quickstart.md
+|    |--- hello.md
+|    |--- paper.config.json   (add paper.config.json in doc dir)
+...
+```
+
 just run: 
 ```bash  
-# in the project directory run "paper build {dir}"
+# in the project directory run "paper build"
+# simpler-paper will automatically find the directory
 # ex:
-paper build ./docs
+paper build
 
 # alias:
-paper bd ./docs
+paper bd
 ```  
 
 ## Step 3. Preview  
