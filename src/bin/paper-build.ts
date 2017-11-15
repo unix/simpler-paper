@@ -1,6 +1,5 @@
-import { checkSource, checkConfig, checkTheme, findSource, assignConfig } from '../utils/check'
+import { checkSource, checkTheme, findSource, assignConfig } from '../utils/check'
 import { compileCatalog, compileMarkdown, copyTheme, copyInlineHtml } from '../compile'
-import { defaultConfig } from '../utils/config.default'
 import File from '../utils/file'
 import Log from '../utils/log'
 import chalk from 'chalk'
