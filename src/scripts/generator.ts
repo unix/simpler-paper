@@ -49,7 +49,6 @@ export const side = async(catalogs: Catalog[], config: Config): Promise<HTMLElem
   return [title, list]
 }
 
-
 const initSubList = async () => {
   const containers: NodeListOf<Element> = document.querySelectorAll('.sub-list-container')
   const subList: NodeListOf<Element> = document.querySelectorAll('.sub-list')
@@ -101,11 +100,30 @@ const initSubList = async () => {
   })
 }
 
+const changTitle = (eventHub: any, config: Config) => {
+  const pathToTitle = (p: string) => {
+    let hash: string = p.split('#/').reverse()[0]
+    hash = hash.replace('static/', '')
+      .replace('.html', '')
+      .replace('//', '/')
+      .replace('//', '/')
+    const title = hash.split('/')
+      .map(path => path.replace(/\//g, '').replace(/^\d_/g, ''))
+      .filter(r => !!r)
+      .map(str => config.alias[str] || str)
+      .join(' - ')
+    return title
+  }
+  eventHub.listen('container-changed', ({ detail }) => {
+    document.title = `${pathToTitle(detail)} - ${config.title}`
+  })
+}
+
 export const event = async(config: Config, eventHub: any): Promise<void> => {
   await initSubList()
   
   config.backToTop && new BackToTop()
   config.indicator && new Indicator(eventHub)
   new Highlight(eventHub)
-  
+  changTitle(eventHub, config)
 }

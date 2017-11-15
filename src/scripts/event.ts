@@ -17,7 +17,7 @@ export class EventHub {
       Object.assign({
         bubbles: true,
         cancelable: true,
-      }, detail || {}))
+      }, { detail }))
     this.source.dispatchEvent(event)
   }
   

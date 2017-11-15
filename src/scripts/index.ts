@@ -7,10 +7,10 @@ import { EventHub } from './event'
 
 const docker: Function = async(w: Window, d: Document): Promise<void> => {
   const eventHub = new EventHub()
-  const side: HTMLElement = d.getElementById('side')
+  const sidebar: HTMLElement = d.getElementById('side')
   
   const sides: HTMLElement[] = await Generator.side(catalogs, config)
-  sides.forEach(element => side.appendChild(element))
+  sides.forEach(el => sidebar.appendChild(el))
   
   await Generator.event(config, eventHub)
   
