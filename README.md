@@ -1,5 +1,17 @@
 ## simpler-paper
-A very simple document generator
+A very simple document generator.
+[preview](https://wittbulter.github.io/simpler-paper/)
+
+### Feature
+
+- Agility. just one script(13k, gizp: ~5k), no framework.
+
+- Easy. just one command.
+
+- Lazy load.
+
+- More themes. [simpler-paper-themes](https://github.com/DhyanaChina/simpler-paper-themes)
+
 
 ### Getting Started
 1. install:
@@ -16,6 +28,11 @@ paper build ./docs
 ```bash
 paper server
 ```
+4. deploy:
+```bash
+paper deploy
+```
+
 
 ### Documentation
 > you can create a json file in the document directory.
