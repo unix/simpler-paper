@@ -59,9 +59,9 @@ const generateDirectory = async(path: string, config: Config): Promise<Catalog[]
   return catalogs.sort((pre, next) => pre.weight - next.weight)
 }
 
-export const compileToHtml = async(path: string, config: Config) => {
+export const compileCatalog = async(config: Config) => {
   Log.time.start()
-  const catalogs: Catalog[] = await generateDirectory(path, config)
+  const catalogs: Catalog[] = await generateDirectory(config.__user_source_path, config)
   Log.time.over('generate catalog')
   return catalogs
 }
@@ -90,7 +90,7 @@ const generatePages = async(catalogs: Catalog[], sourcePath: string): Promise<vo
   }
 }
 
-export const insertToApp = async(catalogs: Catalog[], sourcePath: string, config: Config) => {
+export const compileMarkdown = async(catalogs: Catalog[], sourcePath: string) => {
   Log.time.start()
   File.spawnSync('rm', ['-rf', __temp])
   Log.time.over('clear cache')
@@ -109,8 +109,7 @@ export const copyTheme = async(config: Config): Promise<void> => {
   await File.writeFile(`${__temp}/index.css`, themeStr)
 }
 
-export const copyInlineHtml = async(config: Config, catalogs: Catalog[], sourcePath: string)
-: Promise<void> => {
+export const copyInlineHtml = async(config: Config, catalogs: Catalog[]): Promise<void> => {
   const index: string = await File.readFile(`${__app}/index.html`, 'utf-8')
   const indexs: string[] = index.split('</body>')
   let inlineHtml: string = `
@@ -120,7 +119,7 @@ export const copyInlineHtml = async(config: Config, catalogs: Catalog[], sourceP
   const foot = `</body>${indexs.pop()}`
   await File.exec(`cp ${__dirname}/../index.js ${__target}/index.js`)
   
-  const hljs: string = await findHighlight(sourcePath)
+  const hljs: string = await findHighlight(config.__user_source_path)
   inlineHtml = hljs + inlineHtml
   
   inlineHtml = indexs.reduce((pre, next) => pre + next, '') + inlineHtml + foot
