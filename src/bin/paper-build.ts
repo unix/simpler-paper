@@ -1,11 +1,14 @@
 import * as commander from 'commander'
 import { checkSource, checkConfig, checkTheme } from '../utils/check'
-import { compileToHtml, insertToApp, copyTheme, copyInlineHtml } from '../compile'
+import { compileCatalog, compileMarkdown, copyTheme, copyInlineHtml } from '../compile'
 import { defaultConfig } from '../utils/config.default'
 import File from '../utils/file'
 import Log from '../utils/log'
 import { resolve } from 'path'
 
+const removeDir = async(dir) => {
+  File.exists(dir) && await File.exec(`rm -rf ${dir}`)
+}
 // parse path
 commander
   .usage('<document-path> [document-path]')
@@ -18,23 +21,18 @@ const sourcePath: string = `${commander.args[0]}`
   const templateTempPath = `${root}/templates/temp`
   
   // check path
-  if (!await checkSource(sourcePath)) return
+  if (!await checkSource(sourcePath)) return process.exit(1)
   const config: Config = Object.assign({},
-    defaultConfig,
-    await checkConfig(sourcePath),
-    { __user_source_path: sourcePath },
+    defaultConfig, await checkConfig(sourcePath), { __user_source_path: sourcePath },
   )
   const targetPath = `${resolve()}/${config.output}`
-  const catalogs: Catalog[] = await compileToHtml(sourcePath, config)
-  await insertToApp(catalogs, sourcePath, config)
+  const catalogs: Catalog[] = await compileCatalog(config)
+  await compileMarkdown(catalogs, sourcePath)
   
   Log.time.start()
-  // clear up
-  // reset target
-  if (File.exists(templateTargetPath)) {
-    await File.exec(`rm -rf ${templateTargetPath}`)
-    await File.exec(`mkdir ${templateTargetPath}`)
-  }
+  // reset target dir
+  await removeDir(templateTargetPath)
+  await File.exec(`mkdir ${templateTargetPath}`)
   
   // copy themes to target
   await checkTheme(config)
@@ -43,21 +41,16 @@ const sourcePath: string = `${commander.args[0]}`
   
   
   // copy cache to target, clear cache dir
-  if (await File.exists(templateTargetPath)) {
-    await File.exec(`rm -rf ${templateTargetPath}`)
-  }
   await File.exec(`cp -R ${templateTempPath}/ ${templateTargetPath}`)
-  await File.exec(`rm -rf ${templateTempPath}/`)
+  await removeDir(templateTempPath)
   
   // copy run time script and make index.html
-  await copyInlineHtml(config, catalogs, sourcePath)
+  await copyInlineHtml(config, catalogs)
   
   
   // output to user dir
   Log.time.start()
-  if (await File.exists(targetPath)) {
-    await File.exec(`rm -rf ${targetPath}`)
-  }
+  await removeDir(targetPath)
   await File.exec(`cp -R ${templateTargetPath}/ ${targetPath}/`)
   Log.time.over('clear up')
 })()

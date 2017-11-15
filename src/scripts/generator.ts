@@ -35,6 +35,7 @@ const makeList = async(catalogs: Catalog[], path, d: Document) => {
 }
 
 const makeTitle = (config: Config): HTMLElement => {
+  document.title = config.title
   const title: HTMLElement = document.createElement('div')
   title.classList.add('side-title')
   title.innerHTML = `<h2>${config.title}</h2>`

@@ -24,23 +24,26 @@ paper server
 ```typescript
 // paper.config.json
 {
-  // document the alias, the value will be displayed after compilation, default: "null"
+  // document the alias, the value will be displayed after compilation, default: null
   "alias": {
     "quickstart": "Getting Started",
     ...
   },
 
-  // document title, default: "Simpler Paper"
-  "title": "Simpler Paper",
+  // document title, default: "simpler paper"
+  "title": "",
 
-  // generate mini maps on the right side of each document, default: "true"
+  // generate mini maps on the right side of each document, default: true
   "minimap": true,
 
-  // back to top button, default: "true"
+  // back to top button, default: true
   "backToTop": true,
 
   // document page path, default: "/"
-  "docPath": "/"
+  "docPath": "/",
+
+  // loading indicator, default: true
+  "indicator": true
 }
 ```
 

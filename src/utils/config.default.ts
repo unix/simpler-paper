@@ -2,7 +2,7 @@
 
 export const defaultConfig: Config = {
   alias: {},
-  title: 'Simpler Paper',
+  title: 'simpler paper',
   docPath: '/',
   output: 'dist',
   theme: 'default',
