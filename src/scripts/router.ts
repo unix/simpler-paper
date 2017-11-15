@@ -68,11 +68,11 @@ export class Router {
       path += window.__paper.router.default
     }
     const htmlPath: string = Router.replaceSuffix(path)
-    this._loader(Router.removeSlash(this.origin + htmlPath)).then()
+    this._loader(Router.removeSlash(htmlPath)).then()
   }
   
   private async _loader(path: string): Promise<void> {
-    const res: Response = await findHTML(path)
+    const res: Response = await findHTML(this.origin + path)
     const _div: HTMLElement = document.createElement('div')
     _div.classList.add('container-inner')
     _div.innerHTML = await res.text()
