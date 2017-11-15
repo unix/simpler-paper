@@ -78,6 +78,6 @@ export class Router {
     this.slotElement.appendChild(_div)
     
     // emit router event
-    this.eventHub.dispath('container-changed')
+    this.eventHub.dispath('container-changed', path)
   }
 }
