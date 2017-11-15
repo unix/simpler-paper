@@ -1,4 +1,4 @@
-## simpler-paper
+## Simpler Paper
 A very simple document generator.
 [preview](https://wittbulter.github.io/simpler-paper/)
 
