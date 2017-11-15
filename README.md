@@ -19,10 +19,16 @@ A very simple document generator.
 npm i -g simpler-paper
 ```
 2. usage:
+> create "paper.config.json" in project document directory.
+> simpler-paper will automatically find the directory
+
 ```bash
-# in the project directory run "paper build {dir}"
-# ex:
-paper build ./docs
+# create "paper.config.json" in project document directory
+# like "docs"
+mkdir docs && touch docs/paper.config.json && vi docs/paper.config.json
+
+# then:
+paper build
 ```
 3. preview:
 ```bash
@@ -36,7 +42,7 @@ paper deploy
 
 ### Documentation
 > you can create a json file in the document directory.
-> for example, you document directory is `'./docs'`, and just run: `$ touch ./docs/paper.config.json`.
+> for example, you document directory is `'./docs'`, and just run: `mkdir docs && touch docs/paper.config.json && vi docs/paper.config.json`.
 
 ```typescript
 // paper.config.json
