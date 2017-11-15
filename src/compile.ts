@@ -60,9 +60,9 @@ const generateDirectory = async(path: string, config: Config): Promise<Catalog[]
 }
 
 export const compileCatalog = async(config: Config) => {
-  Log.time.start()
+  Log.time.start('generate catalog')
   const catalogs: Catalog[] = await generateDirectory(config.__user_source_path, config)
-  Log.time.over('generate catalog')
+  Log.time.over()
   return catalogs
 }
 
@@ -91,13 +91,13 @@ const generatePages = async(catalogs: Catalog[], sourcePath: string): Promise<vo
 }
 
 export const compileMarkdown = async(catalogs: Catalog[], sourcePath: string) => {
-  Log.time.start()
+  Log.time.start('compile to html')
   File.spawnSync('rm', ['-rf', __temp])
   
   await File.exec(`mkdir ${__temp}`)
   await File.exec(`mkdir ${__temp}/static/`)
   await generatePages(catalogs, sourcePath)
-  Log.time.over('compile to html')
+  Log.time.over()
 }
 
 export const copyTheme = async(config: Config): Promise<void> => {

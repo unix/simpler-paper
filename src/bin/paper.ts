@@ -13,6 +13,7 @@ commander
   .usage('<command> [options]')
   .command('build', 'generate document')
   .command('server', 'lift the document on the local server')
+  .command('deploy', 'deploy documents in github')
   .parse(process.argv)
 
   

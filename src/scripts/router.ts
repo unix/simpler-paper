@@ -7,6 +7,7 @@ export class Router {
   private links: any[] = []
   private lastLink: HTMLElement
   private eventHub: any
+  private origin: string
   
   static removeHashTag(hash: string = ''): string {
     if (!hash.startsWith('#')) return hash
@@ -25,6 +26,7 @@ export class Router {
   constructor(slotElement: HTMLElement, docPath: string = '/') {
     this.slotElement = slotElement
     this.docPath = docPath
+    this.origin = window.location.origin + window.location.pathname
     this.initList()
   }
   
@@ -70,7 +72,7 @@ export class Router {
   }
   
   private async _loader(path: string): Promise<void> {
-    const res: Response = await findHTML(path)
+    const res: Response = await findHTML(this.origin + path)
     const _div: HTMLElement = document.createElement('div')
     _div.classList.add('container-inner')
     _div.innerHTML = await res.text()

@@ -29,7 +29,7 @@ const sourcePath: string = `${commander.args[0]}`
   const catalogs: Catalog[] = await compileCatalog(config)
   await compileMarkdown(catalogs, sourcePath)
   
-  Log.time.start()
+  Log.time.start('generative theme')
   // reset target dir
   await removeDir(templateTargetPath)
   await File.exec(`mkdir ${templateTargetPath}`)
@@ -37,7 +37,7 @@ const sourcePath: string = `${commander.args[0]}`
   // copy themes to target
   await checkTheme(config)
   await copyTheme(config)
-  Log.time.over('generative theme')
+  Log.time.over()
   
   
   // copy cache to target, clear cache dir
@@ -49,9 +49,9 @@ const sourcePath: string = `${commander.args[0]}`
   
   
   // output to user dir
-  Log.time.start()
+  Log.time.start('clear up')
   await removeDir(targetPath)
   await File.exec(`cp -R ${templateTargetPath}/ ${targetPath}/`)
-  Log.time.over('clear up')
+  Log.time.over()
 })()
 
