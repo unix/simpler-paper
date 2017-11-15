@@ -11,8 +11,8 @@ if (+v < 5) {
 commander
   .version(version)
   .usage('<command> [options]')
-  .command('build', 'generate document')
-  .command('server', 'lift the document on the local server')
+  .command('build', 'generate document').alias('bd')
+  .command('server', 'lift the document on the local server').alias('s')
   .command('deploy', 'deploy documents in github')
   .parse(process.argv)
 
