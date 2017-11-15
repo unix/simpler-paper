@@ -111,8 +111,7 @@ export const copyInlineHtml = async(config: Config, catalogs: Catalog[]): Promis
   const index: string = await File.readFile(`${__app}/index.html`, 'utf-8')
   const indexs: string[] = index.split('</body>')
   let scripts: string = `
-    <script>window.__config = ${JSON.stringify(config)}</script>
-    <script>window.__catalogs = ${JSON.stringify(catalogs)}</script>
+    <script>window.__config=${JSON.stringify(config)};window.__catalogs=${JSON.stringify(catalogs)}</script>
     <script src="./index.js"></script>`
   const foot = `</body>${indexs.pop()}`
   await File.exec(`cp ${__dirname}/../index.js ${__target}/index.js`)
@@ -121,5 +120,6 @@ export const copyInlineHtml = async(config: Config, catalogs: Catalog[]): Promis
   let inlineHtml: string = indexs.reduce((pre, next) => pre + next, '') + scripts + foot
   inlineHtml = inlineHtml.replace('__TITLE__', config.title)
   inlineHtml = appendHighlightStyle(inlineHtml)
+  inlineHtml = inlineHtml.replace(/\n/g, '').replace(/>\s+</g, '><')
   await File.writeFile(`${__target}/index.html`, inlineHtml, 'utf-8')
 }
