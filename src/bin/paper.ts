@@ -15,6 +15,7 @@ commander
   .command('build', 'generate document').alias('bd')
   .command('server', 'lift the document on the local server').alias('s')
   .command('deploy', 'deploy documents in github')
+  .command('implode ', 'destroy self')
   .parse(process.argv)
 
   
