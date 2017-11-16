@@ -60,7 +60,6 @@ export class Router {
     
     const hash: string = Router.removeHashTag(window.location.hash)
     this.toggleList(hash)
-    
     let path: string = '/static/' + this.docPath + hash
     
     // default router path
