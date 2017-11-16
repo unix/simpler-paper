@@ -11,6 +11,7 @@ if (+v < 5) {
 commander
   .version(version)
   .usage('<command> [options]')
+  .command('init', 'init a document folder').alias('i')
   .command('build', 'generate document').alias('bd')
   .command('server', 'lift the document on the local server').alias('s')
   .command('deploy', 'deploy documents in github')

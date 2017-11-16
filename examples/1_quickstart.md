@@ -4,12 +4,18 @@ Simpler Paper is a very simple and easy to use the document generator.
 you only need to run a command, All of the Markdown will be automatically integrated into the site. 
 
 
-## Step 1. Install
-run `npm install -g simpler-paper`  
+## Step 1. Init
+```bash
+# install 
+npm install -g simpler-paper  
 
+# init  
+paper i
+```
 
 ## Step 2. Build  
-create "paper.config.json" in project document directory.  
+> Don't forget to add some markdown files.  
+
 Example:
 ```html  
 
@@ -17,41 +23,30 @@ Example:
 |--- build
 |--- dist
 |--- scripts
-|--- docs
+|--- docs    ==============     document directory
 |    |--- quickstart.md
 |    |--- hello.md
-|    |--- paper.config.json   (add paper.config.json in doc dir)
+|    |--- paper.config.json
 ...
 ```
 
 just run: 
 ```bash  
-# in the project directory run "paper build"
-# simpler-paper will automatically find the directory
-# ex:
-paper build
+# build to html
+paper build  
 
-# alias:
-paper bd
-```  
-
-## Step 3. Preview  
-If you want to see the document page immediately, run:  
-```bash
-paper server  
-
-# alias:
+# preview  
 paper s
 ```  
 
-## Step 4. Deploy
+## Step 3. Deploy
 > In default, the document will be released to github.    
 
 ```bash
 paper deploy
 ```
-  
-## Step 5. Set github pages  
+
+### Other. Set github pages  
 
   1. go to your rep.
   2. Settings > Options > GitHub Pages  

@@ -3,10 +3,11 @@ import File from './file'
 import Log from './log'
 import { Stats } from 'fs'
 
-export const checkSource = async(path: string = ''): Promise<boolean> => {
-  const pass: boolean = await File.exists(path)
-  !pass && Log.sourceError(path)
-  return pass
+export const checkSource = async(path: string = '') => {
+  if (!await File.exists(path)) {
+    Log.sourceError(path)
+    process.exit(1)
+  }
 }
 
 export const checkConfig = async(path: string = ''): Promise<any> => {
@@ -36,19 +37,27 @@ export const checkTheme = async(config: Config): Promise<boolean> => {
 
 export const findSource = async(userPath: string): Promise<string> => {
   const files: string[] = await File.readdir(userPath)
-  let dir: string = ''
+  const directories: string[] = []
   for (const f of files) {
     const stat: Stats = await File.stat(`${userPath}/${f}`)
     if (stat.isFile()) continue
     if (await File.exists(`${userPath}/${f}/paper.config.json`)) {
-      dir = f
-      break
+      directories.push(f)
     }
   }
-  return dir
+  if (directories.length > 1) {
+    Log.configNonUnique(directories)
+    process.exit(1)
+  }
+  if (directories.length === 0) {
+    Log.configNotFound()
+    process.exit(1)
+  }
+  return directories[0]
 }
 
 export const assignConfig = async(source: string): Promise<Config> => {
+  await checkSource(source)
   const userConfig: any = await checkConfig(source)
   const config: Config = Object.assign({},
     defaultConfig,

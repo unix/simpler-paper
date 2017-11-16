@@ -17,6 +17,16 @@ export default {
     console.log(chalk.red('\nError: paper.config.json is not a valid file.\n'))
   },
   
+  configNonUnique: (directories: string[]) => {
+    console.log(chalk.red('\n\nError: There are multiple configuration files:'))
+    directories.forEach(dir => console.log(`  ${dir}/paper.config.json`))
+    console.log('\nsmipler-paper requires only one configuration file.')
+  },
+  
+  configNotFound: () => {
+    console.log(chalk.red(`\nError: not found paper.config.json.\n`))
+  },
+  
   notFoundTheme: (theme: string) => {
     console.log(chalk.red(`\nError: paper theme [${theme}] is not found.\n`))
   },
