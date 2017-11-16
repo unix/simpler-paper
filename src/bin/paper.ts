@@ -3,8 +3,8 @@ import chalk from 'chalk'
 const { version } = require('../../package.json')
 const v: string = process.version.match(/\d+/g)[0]
 if (+v < 5) {
-  console.log(chalk.yellow('require NodeJS 8.x+ version'))
-  console.log(chalk.yellow('you need upgrade NodeJS\n'))
+  console.log(chalk.yellow('require NodeJS 6+ version.'))
+  console.log(chalk.yellow('you need to upgrade the NodeJS.\n'))
   process.exit(1)
 }
 
