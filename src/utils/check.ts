@@ -36,16 +36,19 @@ export const checkTheme = async(config: Config): Promise<boolean> => {
 
 export const findSource = async(userPath: string): Promise<string> => {
   const files: string[] = await File.readdir(userPath)
-  let dir: string = ''
+  const directories: string[] = []
   for (const f of files) {
     const stat: Stats = await File.stat(`${userPath}/${f}`)
     if (stat.isFile()) continue
     if (await File.exists(`${userPath}/${f}/paper.config.json`)) {
-      dir = f
-      break
+      directories.push(f)
     }
   }
-  return dir
+  if (directories.length > 1) {
+    Log.configNonUnique(directories)
+    process.exit(1)
+  }
+  return directories[0]
 }
 
 export const assignConfig = async(source: string): Promise<Config> => {
