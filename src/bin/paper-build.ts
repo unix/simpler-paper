@@ -1,8 +1,7 @@
-import { checkSource, checkTheme, findSource, assignConfig } from '../utils/check'
+import { checkTheme, findSource, assignConfig } from '../utils/check'
 import { compileCatalog, compileMarkdown, copyTheme, copyInlineHtml } from '../compile'
 import File from '../utils/file'
 import Log from '../utils/log'
-import chalk from 'chalk'
 import { resolve } from 'path'
 
 const removeDir = async(dir) => {
@@ -17,11 +16,6 @@ const removeDir = async(dir) => {
   // check path
   Log.time.start('check config')
   const source: string = await findSource(process.cwd())
-  if (!source) {
-    console.log(chalk.red('Error: not found paper.config.json'))
-    return Log.time.over(false)
-  }
-  if (!await checkSource(source)) return Log.time.over(false)
   const config: Config = await assignConfig(source)
   Log.time.over()
   

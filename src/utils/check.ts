@@ -3,10 +3,11 @@ import File from './file'
 import Log from './log'
 import { Stats } from 'fs'
 
-export const checkSource = async(path: string = ''): Promise<boolean> => {
-  const pass: boolean = await File.exists(path)
-  !pass && Log.sourceError(path)
-  return pass
+export const checkSource = async(path: string = '') => {
+  if (!await File.exists(path)) {
+    Log.sourceError(path)
+    process.exit(1)
+  }
 }
 
 export const checkConfig = async(path: string = ''): Promise<any> => {
@@ -48,10 +49,15 @@ export const findSource = async(userPath: string): Promise<string> => {
     Log.configNonUnique(directories)
     process.exit(1)
   }
+  if (directories.length === 0) {
+    Log.configNotFound()
+    process.exit(1)
+  }
   return directories[0]
 }
 
 export const assignConfig = async(source: string): Promise<Config> => {
+  await checkSource(source)
   const userConfig: any = await checkConfig(source)
   const config: Config = Object.assign({},
     defaultConfig,

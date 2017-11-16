@@ -23,6 +23,10 @@ export default {
     console.log('\nsmipler-paper requires only one configuration file.')
   },
   
+  configNotFound: () => {
+    console.log(chalk.red(`\nError: not found paper.config.json.\n`))
+  },
+  
   notFoundTheme: (theme: string) => {
     console.log(chalk.red(`\nError: paper theme [${theme}] is not found.\n`))
   },
