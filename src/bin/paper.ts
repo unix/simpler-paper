@@ -3,8 +3,8 @@ import chalk from 'chalk'
 const { version } = require('../../package.json')
 const v: string = process.version.match(/\d+/g)[0]
 if (+v < 5) {
-  console.log(chalk.yellow('require NodeJS 8.x+ version'))
-  console.log(chalk.yellow('you need upgrade NodeJS\n'))
+  console.log(chalk.yellow('require NodeJS 6+ version.'))
+  console.log(chalk.yellow('you need to upgrade the NodeJS.\n'))
   process.exit(1)
 }
 
@@ -15,6 +15,7 @@ commander
   .command('build', 'generate document').alias('bd')
   .command('server', 'lift the document on the local server').alias('s')
   .command('deploy', 'deploy documents in github')
+  .command('implode ', 'destroy self')
   .parse(process.argv)
 
   
