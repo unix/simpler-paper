@@ -12,9 +12,17 @@ interface Config {
 }
 
 interface Catalog {
-  fileName: string,
+  // file path
+  path?: string,
+  
+  // file native name
+  native: string,
+  
+  // file show name
   name: string,
+  
   weight: number,
+  
   children?: Catalog[],
 }
 
