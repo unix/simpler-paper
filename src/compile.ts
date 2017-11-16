@@ -9,36 +9,30 @@ const __temp = `${__dirname}/../../templates/temp`
 const USER_PATH = process.cwd()
 
 
-const isMarkFileOrDirectory = (name: string): boolean => {
-  return name.endsWith('.md') || !name.includes('.')
-}
-
-const makeNameAndWeight = (filePath: string): [string, number] => {
-  let weight: number = 100
-  let name = filePath.split('.md')[0]
-  if (!name.includes('/')) return [name, weight]
-  name = name.split('/').reverse()[0]
+const parseSuffix = (filePath: string): [string, string, string, number] => {
+  const suffix: string = filePath.split('/').reverse()[0]
+  // suffix: {number}_{filename}.md
+  const includeNumberPrefix = /^\d_/.test(suffix) && !Number.isNaN(+suffix.split('_')[0])
+  const weight = includeNumberPrefix ? +suffix.split('_')[0] : 100
+  const fileName = includeNumberPrefix ? suffix.replace(/^\d_/, '') : suffix
+  const path = filePath.replace(suffix, '')
   
-  // the file name contains weights
-  // weight style: {num}_{native_file_name}.md
-  if (/^\d_/.test(name) && !Number.isNaN(+name[0])) {
-    weight = +name[0]
-    name = name.replace(/^\d_/, '')
-  }
-  return [name, weight]
+  return [path, suffix, fileName, weight]
 }
 
 const generateCatalog = (filePath: string, config: Config, children: Catalog[] = []) => {
-  const [directoryName, weight] = makeNameAndWeight(filePath)
+  const [path, suffix, fileName, weight] = parseSuffix(filePath)
   return {
-    fileName: filePath,
-    name: config.alias[directoryName] ? config.alias[directoryName] : directoryName,
+    path, native: suffix,
+    name: config.alias[fileName] ? config.alias[fileName] : fileName,
     children,
     weight,
   }
 }
 
-const generateDirectory = async(path: string, config: Config): Promise<Catalog[]> => {
+const isMarkFileOrDirectory = (name: string): boolean => name.endsWith('.md') || !name.includes('.')
+
+const deepEachSource = async(path: string, config: Config): Promise<Catalog[]> => {
   const files: string[] = await File.readdir(`${USER_PATH}/${path}`)
   const catalogs: Catalog[] = []
   
@@ -53,7 +47,7 @@ const generateDirectory = async(path: string, config: Config): Promise<Catalog[]
       continue
     }
     if (stat.isDirectory()) {
-      catalogs.push(generateCatalog(nextPath, config, await generateDirectory(nextPath, config)))
+      catalogs.push(generateCatalog(nextPath, config, await deepEachSource(nextPath, config)))
     }
   }
   return catalogs.sort((pre, next) => pre.weight - next.weight)
@@ -61,7 +55,7 @@ const generateDirectory = async(path: string, config: Config): Promise<Catalog[]
 
 export const compileCatalog = async(config: Config) => {
   Log.time.start('generate catalog')
-  const catalogs: Catalog[] = await generateDirectory(config.__user_source_path, config)
+  const catalogs: Catalog[] = await deepEachSource(config.__user_source_path, config)
   Log.time.over()
   return catalogs
 }
@@ -72,21 +66,22 @@ const makeTargetPath = (path: string, sourcePath: string): string => {
   return `${__temp}/static/${sourceFullPath}`
 }
 
+// the markdown is converted to HTML
 const createHtml = async(source: string, target: string): Promise<void> => {
   const content: string = await File.readFile(source, 'utf-8')
-  const path: string = target.replace('.md', '.html')
-  await File.writeFile(path, marked(content), 'utf-8')
+  target = target.replace('.md', '.html')
+  await File.writeFile(target, marked(content), 'utf-8')
 }
 
 const generatePages = async(catalogs: Catalog[], sourcePath: string): Promise<void> => {
   for (const unit of catalogs) {
-    const p: string = makeTargetPath(unit.fileName, sourcePath)
+    const p: string = makeTargetPath(unit.path + unit.name, sourcePath)
     if (unit.children && unit.children.length > 0) {
       await File.spawnSync('mkdir', [p])
       await generatePages(unit.children, sourcePath)
       continue
     }
-    await createHtml(unit.fileName, p)
+    await createHtml(unit.path + unit.native, p)
   }
 }
 
