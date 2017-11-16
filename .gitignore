@@ -58,4 +58,6 @@ jspm_packages/
 templates/temp
 templates/target
 
+# docs
+docs/
 
