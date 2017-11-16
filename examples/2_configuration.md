@@ -1,7 +1,7 @@
 # Configuration  
 
 ## Step 1. add paper.config.json  
-> you can create a json file in the document directory. 
+> run `paper init` can quickly create `paper.config.json`
 
 Example: 
 ```html  
