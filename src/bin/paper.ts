@@ -1,6 +1,8 @@
 import * as commander from 'commander'
 import chalk from 'chalk'
-const { version } = require('../../package.json')
+import * as notifier from 'update-notifier'
+const pkg = require('../../package.json')
+
 const v: string = process.version.match(/\d+/g)[0]
 if (+v < 5) {
   console.log(chalk.yellow('require NodeJS 6+ version.'))
@@ -8,8 +10,10 @@ if (+v < 5) {
   process.exit(1)
 }
 
+notifier({ pkg, updateCheckInterval: 1 }).notify({ isGlobal: true })
+
 commander
-  .version(version)
+  .version(pkg.version)
   .usage('<command> [options]')
   .command('init', 'init a document folder').alias('i')
   .command('build', 'generate document').alias('bd')
