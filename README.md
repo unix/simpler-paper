@@ -23,6 +23,8 @@
 
 - Lazy load.
 
+- Auto compatible mobile phone.
+
 - More themes. [simpler-paper-themes](https://github.com/DhyanaChina/simpler-paper-themes)
 
 
