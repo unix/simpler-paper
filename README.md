@@ -1,10 +1,9 @@
 
 <div align="center">
-<img src="http://static.wittsay.cc/simpler-paper-logo.png" width="120" height="80" align="center">
+<img src="https://github.com/DhyanaChina/simpler-paper/blob/master/logo.png" align="center">
 </div>
-
-<h2 align="center"> Simpler Paper </h2>
-
+<h2></h2>
+Simpler Paper
 > A very simple document generator. [preview](https://wittbulter.github.io/simpler-paper/)
 
 
