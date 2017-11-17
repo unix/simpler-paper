@@ -1,6 +1,12 @@
-## Simpler Paper
-A very simple document generator.
-[preview](https://wittbulter.github.io/simpler-paper/)
+
+<div align="center">
+<img src="http://static.wittsay.cc/simpler-paper-logo.png" width="120" height="80" align="center">
+</div>
+
+<h2 align="center"> Simpler Paper </h2>
+
+> A very simple document generator. [preview](https://wittbulter.github.io/simpler-paper/)
+
 
 ### Feature
 
