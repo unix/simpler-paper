@@ -1,4 +1,4 @@
-import { EventHub } from './event'
+import { EventHub } from '../event'
 
 export class Indicator {
   

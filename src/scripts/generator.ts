@@ -1,6 +1,7 @@
-import { BackToTop } from './backToTop'
-import { Highlight } from './highlight'
-import { Indicator } from './indicator'
+import { BackToTop } from './plugins/back'
+import { Highlight } from './plugins/highlight'
+import { Indicator } from './plugins/indicator'
+import { Responsive } from './plugins/responsive'
 
 const saveToDefaultRouter = (link: string) => {
   if (window.__paper.router.default) return
@@ -125,5 +126,6 @@ export const event = async(config: Config, eventHub: any): Promise<void> => {
   config.backToTop && new BackToTop()
   config.indicator && new Indicator(eventHub)
   new Highlight(eventHub)
+  new Responsive()
   changTitle(eventHub, config)
 }
