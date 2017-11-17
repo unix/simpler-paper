@@ -1,10 +1,9 @@
 
 <div align="center">
-<img src="http://static.wittsay.cc/simpler-paper-logo.png" width="120" height="80" align="center">
+<img src="https://github.com/DhyanaChina/simpler-paper/blob/master/logo.png" align="center">
 </div>
-
-<h2 align="center"> Simpler Paper </h2>
-
+<h2></h2>
+Simpler Paper
 > A very simple document generator. [preview](https://wittbulter.github.io/simpler-paper/)
 
 
@@ -12,26 +11,7 @@
 
 - Agility. just one script(13k, gizp: ~5k), no framework.
 
-- Easy. just one command.
-
-- Lazy load.
-
-- More themes. [simpler-paper-themes](https://github.com/DhyanaChina/simpler-paper-themes)
-
-
-### Getting Started
-1. install and init:
-```bash
-# install
-npm i -g simpler-paper
-
-# init (create "paper.config.json" in project document directory)
-paper init
-
-```
-
-2. usage:
-> Don't forget to add some markdown files.
+- Easy. just one command.simpler-paper-logo.png> Don't forget to add some markdown files.
 
 ```bash
 # build to html
