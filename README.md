@@ -6,11 +6,12 @@
 <a target="_blank" href="https://www.npmjs.com/package/simpler-paper" title="NPM version"><img src="https://img.shields.io/npm/v/npm.svg?style=for-the-badge"></a>
 <a target="_blank" href="http://nodejs.org/download/" title="Node version"><img src="https://img.shields.io/badge/node.js-%3E=_6.0-green.svg?style=for-the-badge"></a>
 <a target="_blank" href="https://opensource.org/licenses/MIT" title="License: MIT"><img src="https://img.shields.io/github/license/mashape/apistatus.svg?style=for-the-badge"></a>
-<a target="_blank" href="https://travis-ci.org/DhyanaChina/simpler-paper" title="Build Status"><img src="https://travis-ci.org/DhyanaChina/simpler-paper.svg?branch=master&style=for-the-badge"></a>
+<a target="_blank" href="https://travis-ci.org/DhyanaChina/simpler-paper" title="Build Status"><img src="https://img.shields.io/travis/DhyanaChina/simpler-paper/master.svg?style=for-the-badge"></a>
 <a target="_blank" href="https://www.npmjs.com/package/simpler-paper" title="Downloads"><img src="https://img.shields.io/npm/dt/simpler-paper.svg?style=for-the-badge"></a>
 </p>
 
-> Simpler Paper
+> Simpler Paper  
+
 > A very simple document generator. [preview](https://wittbulter.github.io/simpler-paper/)
 
 
