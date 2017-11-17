@@ -10,7 +10,7 @@ if (+v < 5) {
   process.exit(1)
 }
 
-notifier({ pkg, updateCheckInterval: 1000 * 10 }).notify()
+notifier({ pkg, updateCheckInterval: 1 }).notify({ isGlobal: true })
 
 commander
   .version(pkg.version)
