@@ -2,8 +2,9 @@
 <p align="center" height="300">
 <img src="https://github.com/DhyanaChina/simpler-paper/blob/master/logo.png" align="center">
 </p>
+
 <p align=center>
-<a target="_blank" href="https://www.npmjs.com/package/simpler-paper" title="NPM version"><img src="https://img.shields.io/npm/v/npm.svg?style=flat-square"></a>
+<a target="_blank" href="https://www.npmjs.com/package/simpler-paper" title="NPM version"><img src="https://img.shields.io/github/package-json/v/DhyanaChina/simpler-paper.svg?style=flat-square"></a>
 <a target="_blank" href="http://nodejs.org/download/" title="Node version"><img src="https://img.shields.io/badge/node.js-%3E=_6.0-green.svg?style=flat-square"></a>
 <a target="_blank" href="https://opensource.org/licenses/MIT" title="License: MIT"><img src="https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square"></a>
 <a target="_blank" href="https://travis-ci.org/DhyanaChina/simpler-paper" title="Build Status"><img src="https://img.shields.io/travis/DhyanaChina/simpler-paper/master.svg?style=flat-square"></a>
