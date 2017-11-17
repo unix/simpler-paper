@@ -11,7 +11,26 @@ Simpler Paper
 
 - Agility. just one script(13k, gizp: ~5k), no framework.
 
-- Easy. just one command.simpler-paper-logo.png> Don't forget to add some markdown files.
+- Easy. just one command.
+
+- Lazy load.
+
+- More themes. [simpler-paper-themes](https://github.com/DhyanaChina/simpler-paper-themes)
+
+
+### Getting Started
+1. install and init:
+```bash
+# install
+npm i -g simpler-paper
+
+# init (create "paper.config.json" in project document directory)
+paper init
+
+```
+
+2. usage:
+> Don't forget to add some markdown files.
 
 ```bash
 # build to html
