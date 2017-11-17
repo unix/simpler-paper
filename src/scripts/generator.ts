@@ -18,7 +18,7 @@ const makeList = async(catalogs: Catalog[], path, d: Document) => {
     
     // is directory
     if (unit.children && unit.children.length > 0) {
-      li.innerHTML = `<p class="chapter dir"><a>${unit.name}</a></p>`
+      li.innerHTML = `<p class="chapter dir"><a>${unit.name.replace('.md', '')}</a></p>`
       li.classList.add('sub-list-container')
       const subList: HTMLElement = await makeList(unit.children, path, d)
       subList.classList.add('sub-list')
@@ -27,7 +27,7 @@ const makeList = async(catalogs: Catalog[], path, d: Document) => {
       // is link
       // first link
       saveToDefaultRouter(link)
-      li.innerHTML = `<p class="chapter link"><a href="#${link}">${unit.name}</a></p>`
+      li.innerHTML = `<p class="chapter link"><a href="#${link}">${unit.name.replace('.md', '')}</a></p>`
     }
     ul.appendChild(li)
   }

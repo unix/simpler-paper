@@ -18,6 +18,7 @@ export class Responsive {
   
   constructor() {
     this.init()
+    this.initMobileEvent()
   }
   
   private init(): void {
@@ -42,6 +43,17 @@ export class Responsive {
     } catch (e) {}
     
     this.lastSize = size
+  }
+  
+  private initMobileEvent(): void {
+    const sidebar: Element = document.querySelector('#side')
+  
+    sidebar.addEventListener('click', () => {
+      const isMobile: boolean = sidebar.classList.contains('xs') || sidebar.classList.contains('sm')
+      if (!isMobile) return
+      sidebar.classList.toggle('active')
+    })
+    
   }
   
 }
