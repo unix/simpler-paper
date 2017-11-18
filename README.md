@@ -11,7 +11,7 @@
 <a target="_blank" href="https://www.npmjs.com/package/simpler-paper" title="Downloads"><img src="https://img.shields.io/npm/dt/simpler-paper.svg?style=flat-square"></a>
 </p>
 
-> simpler paper, [中文](https://github.com/DhyanaChina/simpler-paper/blob/master/README_CN.md)
+> simpler paper, [中文](https://github.com/DhyanaChina/simpler-paper/blob/master/README_CN.md)  
 > a very simple document generator. [preview](https://wittbulter.github.io/simpler-paper/)
 
 
