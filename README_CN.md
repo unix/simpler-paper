@@ -11,7 +11,7 @@
 </p>
 
 > simpler paper, [English](https://github.com/DhyanaChina/simpler-paper/blob/master/README.md)  
-> 一个简单易用的文档生成器. [预览](https://wittbulter.github.io/simpler-paper/)  
+> 一个简单易用的文档生成器. [预览](https://wittbulter.github.io/simpler-paper/)  
 > 快速的将众多 markdown 文件生成结构化的网站，并一键部署至 github  
 
 
