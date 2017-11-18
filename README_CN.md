@@ -10,9 +10,9 @@
 <a target="_blank" href="https://www.npmjs.com/package/simpler-paper" title="Downloads"><img src="https://img.shields.io/npm/dt/simpler-paper.svg?style=flat-square"></a>
 </p>
 
-> simpler paper, [English](https://github.com/DhyanaChina/simpler-paper/blob/master/README.md)
-> 一个简单易用的文档生成器. [preview](https://wittbulter.github.io/simpler-paper/)
-> 快速的将众多 markdown 文件生成结构化的网站，并一键部署至 github
+> simpler paper, [English](https://github.com/DhyanaChina/simpler-paper/blob/master/README.md)  
+> 一个简单易用的文档生成器. [预览](https://wittbulter.github.io/simpler-paper/)  
+> 快速的将众多 markdown 文件生成结构化的网站，并一键部署至 github  
 
 
 ### 特点
