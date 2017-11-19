@@ -41,4 +41,28 @@ source:
 | |____paper.config.json
 ```  
 target: 
-![example2](http://static.wittsay.cc/simpler-paper-examples-2.png?imageView2/2/w/850/h/300/)
+![example2](http://static.wittsay.cc/simpler-paper-examples-2.png?imageView2/2/w/850/h/300/)  
+
+
+### Code highlighting  
+Adding `highlight.js` files and `highlight.css` files will automatically open the code highlighting  
+You can download and download these files here: [highlightjs](https://highlightjs.org/download/)
+
+```html
+|____docs
+| |____paper.config.json
+| |____3_theme.md
+| |____4_features.md
+| |____1_quickstart.md
+| |____2_configuration.md
+| |____highlight.css
+| |____highlight.js
+
+```  
+
+
+
+
+
+
+
