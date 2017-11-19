@@ -40,7 +40,7 @@ source:
 | | |____answer.2.md
 | |____paper.config.json
 ```  
-target: 
+target:   
 ![example2](http://static.wittsay.cc/simpler-paper-examples-2.png?imageView2/2/w/850/h/300/)  
 
 
