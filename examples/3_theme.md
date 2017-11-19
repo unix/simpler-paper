@@ -5,5 +5,5 @@ here is a list of all topics at present.
 
 > if you want to create a new theme, see [simpler-paper-themes](https://github.com/DhyanaChina/simpler-paper-themes) plz.
 
-- default  
- ![default]()  
+- Default   
+ ![default](http://static.wittsay.cc/simpler-paper-default.png?imageView2/2/w/1000/h/500/)  
