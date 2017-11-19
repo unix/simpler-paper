@@ -12,9 +12,9 @@ const USER_PATH = process.cwd()
 const parseSuffix = (filePath: string): [string, string, string, number] => {
   const suffix: string = filePath.split('/').reverse()[0]
   // suffix: {number}_{filename}.md
-  const includeNumberPrefix = /^\d_/.test(suffix) && !Number.isNaN(+suffix.split('_')[0])
+  const includeNumberPrefix = /^\d+_/.test(suffix) && !Number.isNaN(+suffix.split('_')[0])
   const weight = includeNumberPrefix ? +suffix.split('_')[0] : 100
-  const fileName = includeNumberPrefix ? suffix.replace(/^\d_/, '') : suffix
+  const fileName = includeNumberPrefix ? suffix.replace(/^\d+_/, '') : suffix
   const path = filePath.replace(suffix, '')
   
   return [path, suffix, fileName, weight]

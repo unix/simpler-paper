@@ -109,7 +109,7 @@ const changTitle = (eventHub: any, config: Config) => {
       .replace('//', '/')
       .replace('//', '/')
     const title = hash.split('/')
-      .map(path => path.replace(/\//g, '').replace(/^\d_/g, ''))
+      .map(path => path.replace(/\//g, '').replace(/^\d+_/g, ''))
       .filter(r => !!r)
       .map(str => config.alias[str] || str)
       .join(' - ')
