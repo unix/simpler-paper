@@ -85,10 +85,14 @@ you can create a json file in the document directory.
   // loading indicator, default: true
   "indicator": true
 }
-```
+```  
+
+### Quickstart video
+
+[![simpler paper quickstart](https://img.youtube.com/vi/3D6xaApaC78/0.jpg)](https://www.youtube.com/watch?v=3D6xaApaC78)
 
 
-## LICENSE
+### LICENSE
 
 **MIT**
 
