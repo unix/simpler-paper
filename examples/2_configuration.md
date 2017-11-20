@@ -45,3 +45,18 @@ Example:
 
 ```
 
+### All Properties
+
+| key | type | default | description |
+| --- | --- | --- | --- |
+| alias | `{ [string]: string }` | `{}` | document the alias, the value will be displayed after compilation |
+| title | `string` | `'document title'` | simpler paper |
+| minimap | `boolean` | `true` | generate mini maps on the right side of each document |
+| backToTop | `boolean` | `true` | back to top button |
+| indicator | `boolean` | `true` | loading indicator |
+| docPath | `string` | `'/'` | document page path |
+| theme | `string` | `'default'` | paper theme |
+| output | `string` | `'dist'` | compile ouput |
+
+
+
