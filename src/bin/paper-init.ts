@@ -28,7 +28,7 @@ const question = [{
   const { folder } = await inquirer.prompt(promps)
   
   if (/\s+|\\|\/|\^|\|/.test(folder)) {
-    console.log(`\n${chalk.yellow(folder)} contains illegal characters.`)
+    console.log(`\n${chalk.yellow(folder)} contains unsupported characters.`)
     return process.exit(1)
   }
   
