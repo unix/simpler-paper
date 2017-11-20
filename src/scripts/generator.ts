@@ -3,31 +3,29 @@ import { Highlight } from './plugins/highlight'
 import { Indicator } from './plugins/indicator'
 import { Responsive } from './plugins/responsive'
 
-const saveToDefaultRouter = (link: string) => {
+const saveToDefaultRouter = (link: string): void => {
   if (window.__paper.router.default) return
   window.__paper.router.default = link
 }
-
-const makeLink = (name: string, path: string): string => name.replace(path, '')
+const removeMarkdownSuffix = (name: string) => name.replace('.md', '')
 
 const makeList = async(catalogs: Catalog[], path, d: Document) => {
   const ul: HTMLElement = d.createElement('ul')
   for (const unit of catalogs) {
     const li: HTMLElement = d.createElement('li')
-    const link: string = makeLink(unit.path + unit.name, path)
+    const routerLink: string = (unit.path + unit.name).replace(path, '')
     
     // is directory
     if (unit.children && unit.children.length > 0) {
-      li.innerHTML = `<p class="chapter dir"><a>${unit.name.replace('.md', '')}</a></p>`
+      li.innerHTML = `<p class="chapter dir"><a>${removeMarkdownSuffix(unit.name)}</a></p>`
       li.classList.add('sub-list-container')
       const subList: HTMLElement = await makeList(unit.children, path, d)
       subList.classList.add('sub-list')
       li.appendChild(subList)
     } else {
-      // is link
       // first link
-      saveToDefaultRouter(link)
-      li.innerHTML = `<p class="chapter link"><a href="#${link}">${unit.name.replace('.md', '')}</a></p>`
+      saveToDefaultRouter(routerLink)
+      li.innerHTML = `<p class="chapter link"><a href="#${routerLink}">${removeMarkdownSuffix(unit.name)}</a></p>`
     }
     ul.appendChild(li)
   }
@@ -55,6 +53,7 @@ const initSubList = async () => {
   const subList: NodeListOf<Element> = document.querySelectorAll('.sub-list')
   const subListArr: Element[] = Array.from(subList)
   let baseHeight: number = 37
+  // correction base height
   subListArr.some(sub => {
     const li: HTMLElement = sub.querySelector('li')
     if (li && li.offsetHeight) {
@@ -101,6 +100,7 @@ const initSubList = async () => {
   })
 }
 
+// change document title from location event
 const changTitle = (eventHub: any, config: Config) => {
   const pathToTitle = (p: string) => {
     let hash: string = p.split('#/').reverse()[0]
