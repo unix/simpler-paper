@@ -1,10 +1,10 @@
-# QuickStart
+## QuickStart
 Simpler Paper is a very simple and easy to use the document generator.  
 
 you only need to run a command, All of the Markdown will be automatically integrated into the site. 
 
 
-## Step 1. Init
+### Step 1. Init
 ```bash
 # install 
 npm install -g simpler-paper  
@@ -13,7 +13,7 @@ npm install -g simpler-paper
 paper i
 ```
 
-## Step 2. Build  
+### Step 2. Build  
 > Don't forget to add some markdown files.  
 
 Example:
@@ -39,7 +39,7 @@ paper build
 paper s
 ```  
 
-## Step 3. Deploy
+### Step 3. Deploy
 > In default, the document will be released to github.    
 
 ```bash

@@ -1,6 +1,6 @@
-# Configuration  
+## Configuration  
 
-## Step 1. add paper.config.json  
+### Step 1. add paper.config.json  
 > run `paper init` can quickly create `paper.config.json`
 
 Example: 
@@ -16,7 +16,7 @@ Example:
 |    |--- paper.config.json   (add paper.config.json in doc dir)
 ...
 ```
-## Step 2. improve the configuration file
+### Step 2. improve the configuration file
 
 
 ```json

@@ -4,6 +4,7 @@
   },
   "title": "simpler paper",
   "minimap": true,
+  "theme": "element",
   "backToTop": true,
   "output": "docs",
   "docPath": "/"
