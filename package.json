@@ -1,6 +1,6 @@
 {
   "name": "simpler-paper",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "",
   "main": "dist/bin/paper.js",
   "scripts": {
@@ -52,7 +52,7 @@
     "marked": "^0.3.6",
     "ora": "^1.3.0",
     "serve-static": "^1.13.1",
-    "simpler-paper-themes": "^0.2.1",
+    "simpler-paper-themes": "^0.2.2",
     "update-notifier": "^2.3.0",
     "util.promisify": "^1.0.0"
   }
