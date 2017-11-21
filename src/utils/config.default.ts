@@ -9,4 +9,5 @@ export const defaultConfig: Config = {
   minimap: false,
   backToTop: false,
   indicator: true,
+  expandAll: false,
 }

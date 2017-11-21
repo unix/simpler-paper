@@ -48,7 +48,7 @@ export const side = async(catalogs: Catalog[], config: Config): Promise<HTMLElem
   return [title, list]
 }
 
-const initSubList = async () => {
+const initSubList = async (config: Config) => {
   const containers: NodeListOf<Element> = document.querySelectorAll('.sub-list-container')
   const subList: NodeListOf<Element> = document.querySelectorAll('.sub-list')
   const subListArr: Element[] = Array.from(subList)
@@ -63,7 +63,7 @@ const initSubList = async () => {
   })
   
   // click directory
-  const handle: Function = (event: Event, container: Element): void => {
+  const handle: Function = (container: Element, first?: boolean): void => {
     const getUlRealHeight: Function = (ul: HTMLElement): number => {
       const children: NodeListOf<Element> = ul.querySelectorAll('li')
       return (Array.from(children).length || 0) * baseHeight
@@ -90,10 +90,12 @@ const initSubList = async () => {
     }
     syncParentsHeight(list)
     
-    list.style.height = `${isClose ? 0 : height}px`
+    list.style.height = first ? `${height}px` : `${isClose ? 0 : height}px`
   }
   Array.from(containers).forEach(con => {
-    con.addEventListener('click', (event: Event) => handle(event, con))
+    // expand all menu
+    config.expandAll && handle(con, true)
+    con.addEventListener('click', () => handle(con))
   })
   subListArr.forEach(sub => {
     sub.addEventListener('click', (event: Event) => event.stopPropagation())
@@ -121,7 +123,7 @@ const changTitle = (eventHub: any, config: Config) => {
 }
 
 export const event = async(config: Config, eventHub: any): Promise<void> => {
-  await initSubList()
+  await initSubList(config)
   
   config.backToTop && new BackToTop()
   config.indicator && new Indicator(eventHub)

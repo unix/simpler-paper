@@ -7,5 +7,6 @@
   "theme": "element",
   "backToTop": true,
   "output": "docs",
+  "expandAll": true,
   "docPath": "/"
 }

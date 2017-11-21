@@ -8,6 +8,7 @@ interface Config {
   theme: string,
   output: string,
   indicator: boolean,
+  expandAll: boolean,
   __user_source_path?: string,
 }
 
