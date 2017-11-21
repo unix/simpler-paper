@@ -2,7 +2,7 @@
 interface Config {
   alias: any,
   title: string,
-  minimap: boolean,
+  miniMap: boolean,
   backToTop: boolean,
   docPath: string,
   theme: string,

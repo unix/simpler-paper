@@ -6,7 +6,7 @@ export const defaultConfig: Config = {
   docPath: '/',
   output: 'dist',
   theme: 'default',
-  minimap: false,
+  miniMap: false,
   backToTop: false,
   indicator: true,
   expandAll: false,

@@ -69,7 +69,7 @@ const makeTargetPath = (path: string, sourcePath: string): string => {
 // the markdown is converted to HTML
 const createHtml = async(source: string, target: string): Promise<void> => {
   const content: string = await File.readFile(source, 'utf-8')
-  target = target.replace('.md', '.html')
+  target = target.replace('.md', '.html').replace(/\d+_/g, '')
   await File.writeFile(target, marked(content), 'utf-8')
 }
 
