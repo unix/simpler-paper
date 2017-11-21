@@ -9,7 +9,7 @@ const __temp = `${__dirname}/../../templates/temp`
 const USER_PATH = process.cwd()
 
 
-const parseSuffix = (filePath: string): [string, string, string, number] => {
+const parseSuffix = (filePath: string): [string, string, string, string, number] => {
   const suffix: string = filePath.split('/').reverse()[0]
   // suffix: {number}_{filename}.md
   const includeNumberPrefix = /^\d+_/.test(suffix) && !Number.isNaN(+suffix.split('_')[0])
@@ -17,13 +17,15 @@ const parseSuffix = (filePath: string): [string, string, string, number] => {
   const fileName = includeNumberPrefix ? suffix.replace(/^\d+_/, '') : suffix
   const path = filePath.replace(suffix, '')
   
-  return [path, suffix, fileName, weight]
+  const showPath = path.replace(/\d+_/g, '')
+  
+  return [path, showPath, suffix, fileName, weight]
 }
 
 const generateCatalog = (filePath: string, config: Config, children: Catalog[] = []) => {
-  const [path, suffix, fileName, weight] = parseSuffix(filePath)
+  const [path, showPath, suffix, fileName, weight] = parseSuffix(filePath)
   return {
-    path, native: suffix,
+    path, showPath, native: suffix,
     name: config.alias[fileName] ? config.alias[fileName] : fileName,
     children,
     weight,
@@ -69,13 +71,13 @@ const makeTargetPath = (path: string, sourcePath: string): string => {
 // the markdown is converted to HTML
 const createHtml = async(source: string, target: string): Promise<void> => {
   const content: string = await File.readFile(source, 'utf-8')
-  target = target.replace('.md', '.html').replace(/\d+_/g, '')
+  target = target.replace('.md', '.html')
   await File.writeFile(target, marked(content), 'utf-8')
 }
 
 const generatePages = async(catalogs: Catalog[], sourcePath: string): Promise<void> => {
   for (const unit of catalogs) {
-    const p: string = makeTargetPath(unit.path + unit.name, sourcePath)
+    const p: string = makeTargetPath(unit.showPath + unit.name, sourcePath)
     if (unit.children && unit.children.length > 0) {
       await File.spawnSync('mkdir', [p])
       await generatePages(unit.children, sourcePath)

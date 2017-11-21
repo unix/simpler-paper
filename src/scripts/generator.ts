@@ -13,7 +13,7 @@ const makeList = async(catalogs: Catalog[], path, d: Document) => {
   const ul: HTMLElement = d.createElement('ul')
   for (const unit of catalogs) {
     const li: HTMLElement = d.createElement('li')
-    const routerLink: string = (unit.path + unit.name).replace(path, '')
+    const routerLink: string = (unit.showPath + unit.name).replace(path, '')
     
     // is directory
     if (unit.children && unit.children.length > 0) {
