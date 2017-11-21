@@ -16,6 +16,9 @@ interface Catalog {
   // file path
   path?: string,
   
+  // file show path
+  showPath: string,
+  
   // file native name
   native: string,
   

@@ -1,6 +1,6 @@
 {
   "name": "simpler-paper",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "",
   "main": "dist/bin/paper.js",
   "scripts": {
