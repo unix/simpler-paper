@@ -3,9 +3,9 @@ import Log from './utils/log'
 import * as marked from 'marked'
 import { Stats } from 'fs'
 import { appendHighlight, appendHighlightStyle } from './utils/highlight'
-const __app = `${__dirname}/../../templates/app`
-const __target = `${__dirname}/../../templates/target`
-const __temp = `${__dirname}/../../templates/temp`
+const __app = `${__dirname}/../../templates/app`.replace(/\\/g,'/')
+const __target = `${__dirname}/../../templates/target`.replace(/\\/g,'/')
+const __temp = `${__dirname}/../../templates/temp`.replace(/\\/g,'/')
 const USER_PATH = process.cwd()
 
 
@@ -90,9 +90,11 @@ const generatePages = async(catalogs: Catalog[], sourcePath: string): Promise<vo
 export const compileMarkdown = async(catalogs: Catalog[], sourcePath: string) => {
   Log.time.start('compile to html')
   File.spawnSync('rm', ['-rf', __temp])
-  
-  await File.exec(`mkdir ${__temp}`)
-  await File.exec(`mkdir ${__temp}/static/`)
+
+    await File.mkdir(__temp)
+  // await File.exec(`mkdir ${__temp}/static/`)
+    const staticPath = __temp + '/static'
+    await File.mkdir(staticPath)
   await generatePages(catalogs, sourcePath)
   Log.time.over()
 }
