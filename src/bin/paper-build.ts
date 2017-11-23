@@ -9,7 +9,9 @@ const removeDir = async(dir) => {
 }
 
 ;(async() => {
-  const root = `${__dirname}/../..`
+  var root = `${__dirname}/../..`
+    const regularRoot = root.replace(/\\/g,'/')
+    root = regularRoot
   const templateTargetPath = `${root}/templates/target`
   const templateTempPath = `${root}/templates/temp`
   
@@ -29,8 +31,8 @@ const removeDir = async(dir) => {
   Log.time.start('generative theme')
   // reset target dir
   await removeDir(templateTargetPath)
-  await File.exec(`mkdir ${templateTargetPath}`)
-  
+  await File.mkdir(templateTargetPath)
+
   // copy themes to target
   await checkTheme(config)
   await copyTheme(config)
