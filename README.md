@@ -17,7 +17,7 @@
 
 ### Feature
 
-- Agility. just one script(13k, gizp: ~5k), no framework.
+- Agility. just one script(only ~5kb gzipped), no framework.
 
 - Easy. just one command.
 

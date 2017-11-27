@@ -1,14 +1,15 @@
 ## Features    
+`simpler-paper` contains a lot of conventions, 
+and in some cases you need only a few simple steps to achieve more customizing effects
 
 
 ### Multilayer menu  
-If you want to create a menu that contains parent-child relationships, you just need to create folders.
+if you want to create a menu that contains parent-child relationships, you just need to create folders.
 simpler-paper automatically generate menus based on hierarchical relationships.  
- 
-**Example**  
+like:   
 
-source:
-```html
+```html   
+**doc source**
 |____docs
 | |____install
 | | |____install.1.md
@@ -19,18 +20,20 @@ source:
 | |____paper.config.json
 
 ```  
-target:  
-
+run `paper bd` and get the following effect:     
 ![example1](http://static.wittsay.cc/simpler-paper-examples-1.png?imageView2/2/w/850/h/300/)
 
 
-### Sort  
-Both files and folders support manually specifying weights, you just need to add a prefix to them.  
-Prefixes are automatically removed after compilation.  
 
-**Example**  
-source:  
-```html
+<br/>
+<br/>
+### Sort  
+both files and folders support manually specifying weights, you just need to add a prefix to them.
+prefixes are automatically removed after compilation.  
+like:   
+
+```html  
+**doc source**
 |____docs
 | |____install
 | | |____9_install.1.md
@@ -40,9 +43,12 @@ source:
 | | |____answer.2.md
 | |____paper.config.json
 ```  
-target:   
+run `paper bd` and get the following effect:    
+    
 ![example2](http://static.wittsay.cc/simpler-paper-examples-2.png?imageView2/2/w/850/h/300/)  
 
+<br/>
+<br/>
 
 ### Code highlighting  
 Adding `highlight.js` files and `highlight.css` files will automatically open the code highlighting  
