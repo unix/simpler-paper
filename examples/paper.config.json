@@ -4,7 +4,7 @@
   },
   "title": "simpler paper",
   "minimap": true,
-  "theme": "element",
+  "theme": "plain",
   "backToTop": true,
   "output": "docs",
   "expandAll": true,

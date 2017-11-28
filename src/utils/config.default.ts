@@ -5,7 +5,7 @@ export const defaultConfig: Config = {
   title: 'simpler paper',
   docPath: '/',
   output: 'dist',
-  theme: 'default',
+  theme: 'plain',
   miniMap: false,
   backToTop: false,
   indicator: true,
