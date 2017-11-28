@@ -40,9 +40,11 @@ const removeDir = async(dir) => {
   
   
   // copy cache to target, clear cache dir
-  await File.exec(`cp -R ${templateTempPath}/ ${templateTargetPath}`)
+  // await File.exec(`cp -r ${templateTempPath}/ ${templateTargetPath}`)
+  await File.exec(`cp -r ${templateTempPath}/index.css ${templateTargetPath}`)
+  await File.exec(`cp -r ${templateTempPath}/static ${templateTargetPath}`)
   await removeDir(templateTempPath)
-  
+
   // copy run time script and make index.html
   await copyInlineHtml(config, catalogs)
   
