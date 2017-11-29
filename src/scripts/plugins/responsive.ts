@@ -9,8 +9,8 @@ export class Responsive {
   }
   
   static MakeSize(width: number): string {
-    if (width < 600) return 'xs'
-    if (width < 960) return 'sm'
+    if (width < 540) return 'xs'
+    if (width < 760) return 'sm'
     if (width < 1300) return 'md'
     if (width < 1920) return 'lg'
     return 'xl'

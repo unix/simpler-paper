@@ -11,7 +11,7 @@ here is a list of all topics at present.
  
 - Element `theme: "element"`
 
-  <img src="http://static.wittsay.cc/simpler-paper-examples-3.png?imageView2/2/w/1000/h/500/" width="500" height="260">
+  <img src="http://static.wittsay.cc/simpler-paper-theme2.png?imageView2/2/w/1000/h/500/" width="500" height="260">
 
 - Plain `theme: "plain"`
 
