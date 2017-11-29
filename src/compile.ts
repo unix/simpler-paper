@@ -1,11 +1,13 @@
 import File from './utils/file'
 import Log from './utils/log'
+import Filter from './utils/filter'
 import * as marked from 'marked'
 import { Stats } from 'fs'
 import { appendHighlight, appendHighlightStyle } from './utils/highlight'
-const __app = `${__dirname}/../../templates/app`
-const __target = `${__dirname}/../../templates/target`
-const __temp = `${__dirname}/../../templates/temp`
+
+const __app = Filter.path(`${__dirname}/../../templates/app`)
+const __target = Filter.path(`${__dirname}/../../templates/target`)
+const __temp = Filter.path(`${__dirname}/../../templates/temp`)
 const USER_PATH = process.cwd()
 
 
@@ -37,7 +39,7 @@ const isMarkFileOrDirectory = (name: string): boolean => name.endsWith('.md') ||
 const deepEachSource = async(path: string, config: Config): Promise<Catalog[]> => {
   const files: string[] = await File.readdir(`${USER_PATH}/${path}`)
   const catalogs: Catalog[] = []
-  
+
   for (const name of files) {
     if (!isMarkFileOrDirectory(name)) continue
     const nextPath: string = `${path}/${name}`
@@ -90,9 +92,9 @@ const generatePages = async(catalogs: Catalog[], sourcePath: string): Promise<vo
 export const compileMarkdown = async(catalogs: Catalog[], sourcePath: string) => {
   Log.time.start('compile to html')
   File.spawnSync('rm', ['-rf', __temp])
-  
-  await File.exec(`mkdir ${__temp}`)
-  await File.exec(`mkdir ${__temp}/static/`)
+
+  await File.mkdir(__temp)
+  await File.mkdir(`${__temp}/static`)
   await generatePages(catalogs, sourcePath)
   Log.time.over()
 }
@@ -113,7 +115,7 @@ export const copyInlineHtml = async(config: Config, catalogs: Catalog[]): Promis
   const foot = `</body>${indexs.pop()}`
   await File.exec(`cp ${__dirname}/../index.js ${__target}/index.js`)
   scripts = await appendHighlight(config.__user_source_path, scripts)
-  
+
   let inlineHtml: string = indexs.reduce((pre, next) => pre + next, '') + scripts + foot
   inlineHtml = inlineHtml.replace('__TITLE__', config.title)
   inlineHtml = appendHighlightStyle(inlineHtml)

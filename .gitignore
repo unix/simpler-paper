@@ -57,7 +57,10 @@ jspm_packages/
 # compile cache
 templates/temp
 templates/target
+dist/
 
 # docs
 docs/
 
+# IDE WebStorm
+.idea/

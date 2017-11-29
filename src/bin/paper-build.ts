@@ -2,6 +2,7 @@ import { checkTheme, findSource, assignConfig } from '../utils/check'
 import { compileCatalog, compileMarkdown, copyTheme, copyInlineHtml } from '../compile'
 import File from '../utils/file'
 import Log from '../utils/log'
+import Filter from '../utils/filter'
 import { resolve } from 'path'
 
 const removeDir = async(dir) => {
@@ -9,7 +10,7 @@ const removeDir = async(dir) => {
 }
 
 ;(async() => {
-  const root = `${__dirname}/../..`
+  const root = Filter.path(`${__dirname}/../..`)
   const templateTargetPath = `${root}/templates/target`
   const templateTempPath = `${root}/templates/temp`
   
@@ -29,18 +30,17 @@ const removeDir = async(dir) => {
   Log.time.start('generative theme')
   // reset target dir
   await removeDir(templateTargetPath)
-  await File.exec(`mkdir ${templateTargetPath}`)
-  
+  // await File.mkdir(templateTargetPath) // windows cp error
+
   // copy themes to target
   await checkTheme(config)
   await copyTheme(config)
   Log.time.over()
   
-  
   // copy cache to target, clear cache dir
-  await File.exec(`cp -R ${templateTempPath}/ ${templateTargetPath}`)
+  await File.exec(`cp -r ${templateTempPath}/ ${templateTargetPath}`)
   await removeDir(templateTempPath)
-  
+
   // copy run time script and make index.html
   await copyInlineHtml(config, catalogs)
   
