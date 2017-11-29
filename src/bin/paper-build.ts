@@ -2,7 +2,7 @@ import { checkTheme, findSource, assignConfig } from '../utils/check'
 import { compileCatalog, compileMarkdown, copyTheme, copyInlineHtml } from '../compile'
 import File from '../utils/file'
 import Log from '../utils/log'
-import { pathFormat } from '../compile'
+import Filter from '../utils/filter'
 import { resolve } from 'path'
 
 const removeDir = async(dir) => {
@@ -10,7 +10,7 @@ const removeDir = async(dir) => {
 }
 
 ;(async() => {
-  const root = pathFormat(`${__dirname}/../..`)
+  const root = Filter.path(`${__dirname}/../..`)
   const templateTargetPath = `${root}/templates/target`
   const templateTempPath = `${root}/templates/temp`
   

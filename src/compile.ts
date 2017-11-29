@@ -1,13 +1,13 @@
 import File from './utils/file'
 import Log from './utils/log'
+import Filter from './utils/filter'
 import * as marked from 'marked'
 import { Stats } from 'fs'
 import { appendHighlight, appendHighlightStyle } from './utils/highlight'
 
-export const pathFormat = path => path.replace(/\\/g, '/')
-const __app = pathFormat(`${__dirname}/../../templates/app`)
-const __target = pathFormat(`${__dirname}/../../templates/target`)
-const __temp = pathFormat(`${__dirname}/../../templates/temp`)
+const __app = Filter.path(`${__dirname}/../../templates/app`)
+const __target = Filter.path(`${__dirname}/../../templates/target`)
+const __temp = Filter.path(`${__dirname}/../../templates/temp`)
 const USER_PATH = process.cwd()
 
 
@@ -93,10 +93,8 @@ export const compileMarkdown = async(catalogs: Catalog[], sourcePath: string) =>
   Log.time.start('compile to html')
   File.spawnSync('rm', ['-rf', __temp])
 
-    await File.mkdir(__temp)
-  // await File.exec(`mkdir ${__temp}/static/`)
-  //   const staticPath = __temp + '/static'
-    await File.mkdir(`${__temp}/static`)
+  await File.mkdir(__temp)
+  await File.mkdir(`${__temp}/static`)
   await generatePages(catalogs, sourcePath)
   Log.time.over()
 }
