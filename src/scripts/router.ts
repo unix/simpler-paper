@@ -77,7 +77,8 @@ export class Router {
     _div.innerHTML = await res.text()
     this.slotElement.innerHTML = ''
     this.slotElement.appendChild(_div)
-    this.slotElement.scrollTo(0, 0)
+    
+    this.slotElement.parentElement.scrollTo(0, 0)
     
     // emit router event
     this.eventHub.dispath('container-changed', path)
