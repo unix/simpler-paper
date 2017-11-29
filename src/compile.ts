@@ -4,10 +4,10 @@ import * as marked from 'marked'
 import { Stats } from 'fs'
 import { appendHighlight, appendHighlightStyle } from './utils/highlight'
 
-export const gen = path => path.replace(/\\/g, '/')
-const __app = gen(`${__dirname}/../../templates/app`)
-const __target = gen(`${__dirname}/../../templates/target`)
-const __temp = gen(`${__dirname}/../../templates/temp`)
+export const pathFormat = path => path.replace(/\\/g, '/')
+const __app = pathFormat(`${__dirname}/../../templates/app`)
+const __target = pathFormat(`${__dirname}/../../templates/target`)
+const __temp = pathFormat(`${__dirname}/../../templates/temp`)
 const USER_PATH = process.cwd()
 
 
