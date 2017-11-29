@@ -17,7 +17,7 @@
 
 ### Feature
 
-- Agility. just one script(only ~5kb gzipped), no framework.
+- Agility. just one script(only ~3kb gzipped), no framework.
 
 - Easy. just one command.
 
@@ -72,9 +72,6 @@ you can create a json file in the document directory.
 
   // document title, default: "simpler paper"
   "title": "",
-
-  // generate mini maps on the right side of each document, default: true
-  "minimap": true,
 
   // back to top button, default: true
   "backToTop": true,
