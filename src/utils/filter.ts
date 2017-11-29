@@ -1,5 +1,5 @@
 const pathFormat = path => path.replace(/\\/g, '/')
 
-export default{
+export default {
     path: pathFormat,
 }
