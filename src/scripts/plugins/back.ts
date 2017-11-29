@@ -10,7 +10,7 @@ export class BackToTop {
     this.init()
   }
   
-  private makeBackButtno(): HTMLElement {
+  private makeBackBtn(): HTMLElement {
     const _div: HTMLElement = document.createElement('div')
     _div.classList.add('back-to-top')
     _div.setAttribute('data-mt-duration', '300')
@@ -21,7 +21,7 @@ export class BackToTop {
   
   private init(): void {
     const main: HTMLElement = document.querySelector('.main')
-    const backButton: HTMLElement = this.makeBackButtno()
+    const backButton: HTMLElement = this.makeBackBtn()
     main.appendChild(backButton)
   
     new MoveTo().registerTrigger(backButton)
