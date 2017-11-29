@@ -30,18 +30,15 @@ const removeDir = async(dir) => {
   Log.time.start('generative theme')
   // reset target dir
   await removeDir(templateTargetPath)
-  await File.mkdir(templateTargetPath)
+  // await File.mkdir(templateTargetPath) // windows cp error
 
   // copy themes to target
   await checkTheme(config)
   await copyTheme(config)
   Log.time.over()
   
-  
   // copy cache to target, clear cache dir
-  // await File.exec(`cp -r ${templateTempPath}/ ${templateTargetPath}`)
-  await File.exec(`cp -r ${templateTempPath}/index.css ${templateTargetPath}`)
-  await File.exec(`cp -r ${templateTempPath}/static ${templateTargetPath}`)
+  await File.exec(`cp -r ${templateTempPath}/ ${templateTargetPath}`)
   await removeDir(templateTempPath)
 
   // copy run time script and make index.html
