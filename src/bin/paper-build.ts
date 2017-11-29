@@ -2,6 +2,7 @@ import { checkTheme, findSource, assignConfig } from '../utils/check'
 import { compileCatalog, compileMarkdown, copyTheme, copyInlineHtml } from '../compile'
 import File from '../utils/file'
 import Log from '../utils/log'
+import { gen } from '../compile'
 import { resolve } from 'path'
 
 const removeDir = async(dir) => {
@@ -9,9 +10,7 @@ const removeDir = async(dir) => {
 }
 
 ;(async() => {
-  var root = `${__dirname}/../..`
-    const regularRoot = root.replace(/\\/g,'/')
-    root = regularRoot
+  const root = gen(`${__dirname}/../..`)
   const templateTargetPath = `${root}/templates/target`
   const templateTempPath = `${root}/templates/temp`
   
