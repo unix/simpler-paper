@@ -3,9 +3,11 @@ import Log from './utils/log'
 import * as marked from 'marked'
 import { Stats } from 'fs'
 import { appendHighlight, appendHighlightStyle } from './utils/highlight'
-const __app = `${__dirname}/../../templates/app`.replace(/\\/g,'/')
-const __target = `${__dirname}/../../templates/target`.replace(/\\/g,'/')
-const __temp = `${__dirname}/../../templates/temp`.replace(/\\/g,'/')
+
+export const gen = path => path.replace(/\\/g, '/')
+const __app = gen(`${__dirname}/../../templates/app`)
+const __target = gen(`${__dirname}/../../templates/target`)
+const __temp = gen(`${__dirname}/../../templates/temp`)
 const USER_PATH = process.cwd()
 
 
@@ -37,7 +39,7 @@ const isMarkFileOrDirectory = (name: string): boolean => name.endsWith('.md') ||
 const deepEachSource = async(path: string, config: Config): Promise<Catalog[]> => {
   const files: string[] = await File.readdir(`${USER_PATH}/${path}`)
   const catalogs: Catalog[] = []
-  
+
   for (const name of files) {
     if (!isMarkFileOrDirectory(name)) continue
     const nextPath: string = `${path}/${name}`
@@ -93,8 +95,8 @@ export const compileMarkdown = async(catalogs: Catalog[], sourcePath: string) =>
 
     await File.mkdir(__temp)
   // await File.exec(`mkdir ${__temp}/static/`)
-    const staticPath = __temp + '/static'
-    await File.mkdir(staticPath)
+  //   const staticPath = __temp + '/static'
+    await File.mkdir(`${__temp}/static`)
   await generatePages(catalogs, sourcePath)
   Log.time.over()
 }
@@ -115,7 +117,7 @@ export const copyInlineHtml = async(config: Config, catalogs: Catalog[]): Promis
   const foot = `</body>${indexs.pop()}`
   await File.exec(`cp ${__dirname}/../index.js ${__target}/index.js`)
   scripts = await appendHighlight(config.__user_source_path, scripts)
-  
+
   let inlineHtml: string = indexs.reduce((pre, next) => pre + next, '') + scripts + foot
   inlineHtml = inlineHtml.replace('__TITLE__', config.title)
   inlineHtml = appendHighlightStyle(inlineHtml)
