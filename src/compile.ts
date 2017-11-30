@@ -1,7 +1,6 @@
 import File from './utils/file'
 import Log from './utils/log'
 import Filter from './utils/filter'
-import * as marked from 'marked'
 import { Stats } from 'fs'
 import { appendHighlight, appendHighlightStyle } from './utils/highlight'
 
@@ -74,7 +73,7 @@ const makeTargetPath = (path: string, sourcePath: string): string => {
 const createHtml = async(source: string, target: string): Promise<void> => {
   const content: string = await File.readFile(source, 'utf-8')
   target = target.replace('.md', '.html')
-  await File.writeFile(target, marked(content), 'utf-8')
+  await File.writeFile(target, await File.marked(content), 'utf-8')
 }
 
 const generatePages = async(catalogs: Catalog[], sourcePath: string): Promise<void> => {
