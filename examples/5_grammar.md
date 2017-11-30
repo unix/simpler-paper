@@ -4,14 +4,24 @@ Apart from the standard grammar, we have also prepared some sweeter sweets for y
 ### Prompt message
 
 - **info**
-    `#> message` will be output:
-    `<p class="tips info"></p>`
+
+    `#> info message` will be output:
+
+    #> info message
 
 - **warning**
-    `?> message` will be output:
-    `<p class="tips warning"></p>`
+
+    `?> warning message` will be output:
+
+    ?> warning message
 
 - **error**
-    `!> message` will be output:
-    `<p class="tips error"></p>`
+
+    `!> error message` will be output:
+
+    !> error message
+
+
+
+
 
