@@ -12,7 +12,7 @@ const childProcess = require('child_process')
  * !>     ====>    error
  */
 const renderer = new marked.Renderer()
-const tipsReg = /^(?:!|#|\?)&gt;\s+/g
+const tipsReg = /^(\s*(?:!|#|\?))&gt;\s+/g
 const classMap = { '#': 'info', '?': 'warning', '!': 'error' }
 const paragraphCopy: (t: string) => string = renderer.paragraph
 renderer.paragraph = (text: string): string => {
