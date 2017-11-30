@@ -1,6 +1,7 @@
 {
   "alias": {
-    "quickstart": "getting started"
+    "quickstart": "getting started",
+    "grammar": "grammar extend"
   },
   "title": "simpler paper",
   "minimap": true,
