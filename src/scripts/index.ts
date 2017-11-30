@@ -21,6 +21,7 @@ const docker: Function = async(w: Window, d: Document): Promise<void> => {
 window.onload = (): void => {
   init()
   docker(window, document).then()
+  console.log('Generate source: [simpler-paper]\nWelcome to try: https://github.com/DhyanaChina/simpler-paper')
 }
 
 

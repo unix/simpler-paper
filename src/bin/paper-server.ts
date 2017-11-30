@@ -1,5 +1,5 @@
 import * as commander from 'commander'
-import * as express from 'express'
+import * as http from 'http'
 import * as serveStatic from 'serve-static'
 import File from '../utils/file'
 import chalk from 'chalk'
@@ -12,7 +12,6 @@ const port: number = Number.isNaN(+commander.args[0]) ? 3001 : +commander.args[0
 
 ;(async() => {
   const __target = `${__dirname}/../../templates/target`
-  const app = express()
   
   if (!File.exists(__target)) {
     console.log(chalk.red('Error: not found document.'))
@@ -20,13 +19,14 @@ const port: number = Number.isNaN(+commander.args[0]) ? 3001 : +commander.args[0
     return process.exit(1)
   }
   
-  app.use(serveStatic(__target, {
+  const server = serveStatic(__target, {
     'index': ['index.html'],
-  }))
+  })
+  http.createServer((req, res) => {
+    server(req, res)
+  }).listen(port)
   
   console.log(`server listening on port: ${chalk.green(`${port}`)}`)
-  
-  app.listen(port)
   
 })()
 
