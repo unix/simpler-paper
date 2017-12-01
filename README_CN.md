@@ -110,8 +110,8 @@
 ```
 
 
-## [LICENSE](LICENSE)
+## LICENSE
 
-**MIT**
+[**MIT**](LICENSE)
 
 
