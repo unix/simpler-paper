@@ -3,7 +3,8 @@
 ### Step 1. add paper.config.json  
 > run `paper init` can quickly create `paper.config.json`
 
-Example: 
+Example:
+
 ```html  
 
 -------------   project dir
