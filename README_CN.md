@@ -21,6 +21,7 @@
 - [语法扩展](#语法扩展)
 - [配置文件说明](#配置文件说明)
 - [LICENSE](#license)
+- [预览](https://wittbulter.github.io/simpler-paper/) 
 
 ### 特点
 
