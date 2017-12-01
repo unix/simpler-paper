@@ -20,7 +20,7 @@
 - [快速上手](#快速上手)
 - [语法扩展](#语法扩展)
 - [配置文件说明](#配置文件说明)
-- [LICENSE](LICENSE)
+- [LICENSE](#license)
 
 ### 特点
 
@@ -110,7 +110,7 @@
 ```
 
 
-## LICENSE
+## [LICENSE](LICENSE)
 
 **MIT**
 
