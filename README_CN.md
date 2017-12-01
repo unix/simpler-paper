@@ -65,6 +65,11 @@
     ```
     确保当前操作目录为 Git 仓库。部署完成后在 GitHub 上[设置](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/#enabling-github-pages-to-publish-your-site-from-master-or-gh-pages)为 GitHub pages 。
 
+### 语法扩展
+- [提示语法](https://wittbulter.github.io/simpler-paper/#/grammar.md)
+    - 信息： `#> info message`
+    - 警告： `?> warning message`
+    - 错误： `!> error message`
 
 ### 配置文件说明
 配置文件是 `paper init` 过程中指定文档文件夹下的 `paper.config.json`
