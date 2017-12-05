@@ -6,7 +6,7 @@ import Filter from '../utils/filter'
 import { resolve } from 'path'
 
 const removeDir = async(dir) => {
-  File.exists(dir) && await File.exec(`rm -rf ${dir}`)
+  await File.exists(dir) && await File.exec(`rm -rf ${dir}`)
 }
 
 ;(async() => {
