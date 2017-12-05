@@ -10,7 +10,7 @@
 <a target="_blank" href="https://www.npmjs.com/package/simpler-paper" title="Downloads"><img src="https://img.shields.io/npm/dt/simpler-paper.svg?style=flat-square"></a>
 </p>
 
-> simpler paper, [English](https://github.com/DhyanaChina/simpler-paper/blob/master/README.md)  
+> simpler paper, [English](README.md)  
 > 一个简单易用的文档生成器. [预览](https://wittbulter.github.io/simpler-paper/)  
 > 快速的将众多 markdown 文件生成结构化的网站，并一键部署至 github  
 
@@ -65,7 +65,7 @@
     # 本地预览
     paper server
     ```
-    根据输出的端口，进行本地的预览，默认端口为 3001 。[http://localhost:3001/](http://localhost:3001/)
+    根据输出的端口，进行本地的预览，默认端口为 3001 。[http://localhost:3001/](http://localhost:3001/)  
 1. 部署：
     ```bash
     # 部署至 GitHub
