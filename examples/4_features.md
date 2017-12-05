@@ -21,7 +21,7 @@ like:
 
 ```  
 run `paper bd` and get the following effect:     
-![example1](http://static.wittsay.cc/simpler-paper-examples-1.png?imageView2/2/w/850/h/300/)
+![example1](//static.wittsay.cc/simpler-paper-examples-1.png?imageView2/2/w/850/h/300/)
 
 
 
@@ -45,7 +45,7 @@ like:
 ```  
 run `paper bd` and get the following effect:    
     
-![example2](http://static.wittsay.cc/simpler-paper-examples-2.png?imageView2/2/w/850/h/300/)  
+![example2](//static.wittsay.cc/simpler-paper-examples-2.png?imageView2/2/w/850/h/300/)
 
 <br/>
 <br/>

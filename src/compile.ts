@@ -90,7 +90,7 @@ const generatePages = async(catalogs: Catalog[], sourcePath: string): Promise<vo
 
 export const compileMarkdown = async(catalogs: Catalog[], sourcePath: string) => {
   Log.time.start('compile to html')
-  File.spawnSync('rm', ['-rf', __temp])
+  await File.exists(__temp) && await File.exec(`rm -rf ${__temp}`)
 
   await File.mkdir(__temp)
   await File.mkdir(`${__temp}/static`)
