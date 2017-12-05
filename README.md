@@ -11,7 +11,7 @@
 <a target="_blank" href="https://www.npmjs.com/package/simpler-paper" title="Downloads"><img src="https://img.shields.io/npm/dt/simpler-paper.svg?style=flat-square"></a>
 </p>
 
-> Simpler paper, [中文](https://github.com/DhyanaChina/simpler-paper/blob/master/README_CN.md)  
+> Simpler paper, [中文](README_CN.md)  
  A very simple document generator. [preview](https://wittbulter.github.io/simpler-paper/)  
  Quickly build and deploy markdown files with a few commands.
 
@@ -63,7 +63,7 @@ To use simpler-paper, as the following was required:
     # Local preview
     paper server
     ```
-    The default port for local preview is 3001.[http://localhost:3001/](http://localhost:3001/)
+    The default port for local preview is 3001.[http://localhost:3001/](http://localhost:3001/)  
 1. Deploy:
     ```bash
     # Deploy to GitHub
