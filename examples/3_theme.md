@@ -7,12 +7,12 @@ here is a list of all topics at present.
 
 - Default `theme: "default"`
 
- <img src="//static.wittsay.cc/simpler-paper-default.png?imageView2/2/w/1000/h/500/" width="500" height="260">
+ <img src="assets/theme-default.png" width="500" height="260">
  
 - Element `theme: "element"`
 
-  <img src="//static.wittsay.cc/simpler-paper-theme2.png?imageView2/2/w/1000/h/500/" width="500" height="260">
+  <img src="assets/theme-element.png" width="500" height="260">
 
 - Plain `theme: "plain"`
 
-  <img src="//static.wittsay.cc/simpler-paper-theme3.png?imageView2/2/w/1000/h/500/" width="500" height="260">
+  <img src="assets/theme-plain.png" width="500" height="260">
