@@ -10,10 +10,8 @@ that's our purpose too.
 The features include the following parts:
 
 - [Assets File](#/features/assets.md)
-- [Code Highlighting](#/features/highlighting.md)
 - [Grammar](#/features/grammar.md)
 - [Menus](#/features/menus.md)
-- [Menu Ordering](#/features/ordering.md)
 
 
 
