@@ -1,5 +1,5 @@
 import { checkTheme, findSource, assignConfig } from '../utils/check'
-import { compileCatalog, compileMarkdown, copyTheme, copyInlineHtml } from '../compile'
+import { compileCatalog, compileMarkdown, copyTheme, copyInlineHtml, copyAssets } from '../compile'
 import File from '../utils/file'
 import Log from '../utils/log'
 import Filter from '../utils/filter'
@@ -27,7 +27,7 @@ const removeDir = async(dir) => {
   await compileMarkdown(catalogs, source)
   
   
-  Log.time.start('generative theme')
+  Log.time.start('generative assets')
   // reset target dir
   await removeDir(templateTargetPath)
   // await File.mkdir(templateTargetPath) // windows cp error
@@ -35,6 +35,7 @@ const removeDir = async(dir) => {
   // copy themes to target
   await checkTheme(config)
   await copyTheme(config)
+  await copyAssets(config)
   Log.time.over()
   
   // copy cache to target, clear cache dir
