@@ -41,6 +41,8 @@ const deepEachSource = async(path: string, config: Config): Promise<Catalog[]> =
 
   for (const name of files) {
     if (!isMarkFileOrDirectory(name)) continue
+    // assets is static dir, skip this
+    if (name === 'assets') continue
     const nextPath: string = `${path}/${name}`
     // .replace(/\/.\//g, '/')
       // .replace(/\/\//g,'/')
@@ -103,6 +105,12 @@ export const copyTheme = async(config: Config): Promise<void> => {
   const p: string = `${__dirname}/../../node_modules/simpler-paper-themes/dist/${theme}.css`
   const themeStr: string = await File.readFile(p, 'utf-8')
   await File.writeFile(`${__temp}/index.css`, themeStr)
+}
+
+export const copyAssets = async(config: Config): Promise<void> => {
+  const p: string = `${config.__user_source_path}/assets`
+  if (!(await File.exists(p))) return
+  await File.exec(`cp -r ${p} ${__temp}`)
 }
 
 export const copyInlineHtml = async(config: Config, catalogs: Catalog[]): Promise<void> => {

@@ -35,7 +35,7 @@ set github pages:
   
 the actual effect:     
 
-![example](//static.wittsay.cc/simpler-papergh-pages.png?imageView2/2/w/850/h/300/)
+![example](assets/example-pages.png)
 
 
 
