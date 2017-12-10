@@ -38,7 +38,6 @@
 
 ### Before
 To use simpler-paper, as the following was required:
-- [Git](https://git-scm.com/downloads)
 - [NodeJS](https://nodejs.org/en/)
 
 ### Getting Started
