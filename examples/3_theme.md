@@ -1,9 +1,11 @@
 ## Theme
+The sense of design has always been a part of our great importance, we hope simpler-paper is not just readable,
+it also needs to be pleasing, charismatic and special.
 
 the style of the **simpler-paper** comes from [simpler-paper-themes](https://github.com/DhyanaChina/simpler-paper-themes).
 here is a list of all topics at present.   
 
-> if you want to create a new theme, see [simpler-paper-themes](https://github.com/DhyanaChina/simpler-paper-themes) plz.
+> if you want to create a new theme, go to [simpler-paper-themes](https://github.com/DhyanaChina/simpler-paper-themes).
 
 - Default `theme: "default"`
 
@@ -16,3 +18,4 @@ here is a list of all topics at present.
 - Plain `theme: "plain"`
 
   <img src="assets/theme-plain.png" width="500" height="260">
+
