@@ -11,17 +11,15 @@
 <a target="_blank" href="https://www.npmjs.com/package/simpler-paper" title="Downloads"><img src="https://img.shields.io/npm/dt/simpler-paper.svg?style=flat-square"></a>
 </p>
 
-> A very simple document generator. [preview](https://wittbulter.github.io/simpler-paper/)
- Quickly build and deploy markdown files with a few commands.
+> A very simple document generator. [preview](https://wittbulter.github.io/simpler-paper/).    
+> Quickly build and deploy markdown files with a few commands.
 
 ## Guide
 - [Feature](#feature)
-- [Before](#before)
 - [Getting Started](#getting-started)
-- [Grammar Extend](#grammar-extend)
 - [Configuration Details](#configuration-details)
-- [LICENSE](#license)
 - [Documentation](https://wittbulter.github.io/simpler-paper/)
+- [LICENSE](#license)
 - [中文](README_CN.md)
 
 ### Feature
@@ -36,9 +34,6 @@
 
 - More themes. [simpler-paper-themes](https://github.com/DhyanaChina/simpler-paper-themes)
 
-### Before
-To use simpler-paper, as the following was required:
-- [NodeJS](https://nodejs.org/en/)
 
 ### Getting Started
 1. install: `npm i -g simpler-paper`
