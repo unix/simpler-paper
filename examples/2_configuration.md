@@ -1,7 +1,9 @@
-## Configuration  
+## Configuration
+Configuration file can help you set up a more detailed document，it is under your document folder,
+if you are confused about these configurations, you can skip here~~
 
-### Step 1. add paper.config.json  
-> run `paper init` can quickly create `paper.config.json`
+### Add paper.config.json
+> run `paper init` can quickly create configuration file, if you can't find `paper.config.json`.
 
 Example:
 
@@ -17,34 +19,7 @@ Example:
 |    |--- paper.config.json   (add paper.config.json in doc dir)
 ...
 ```
-### Step 2. improve the configuration file
 
-
-```json
-{
-  // document the alias, the value will be displayed after compilation, default: null
-  "alias": {
-    "quickstart": "Getting Started"
-    //...
-  },
-
-  // document title, default: "simpler paper"
-  "title": "",
-
-  // generate mini maps on the right side of each document, default: true
-  "minimap": true,
-
-  // back to top button, default: true
-  "backToTop": true,
-
-  // document page path, default: "/"
-  "docPath": "/",
-
-  // loading indicator, default: true
-  "indicator": true
-}
-
-```
 
 ### All Properties
 
