@@ -7,6 +7,6 @@
   "minimap": true,
   "backToTop": true,
   "output": "docs",
-  "expandAll": true,
+  "expandAll": false,
   "docPath": "/"
 }
