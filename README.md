@@ -11,8 +11,7 @@
 <a target="_blank" href="https://www.npmjs.com/package/simpler-paper" title="Downloads"><img src="https://img.shields.io/npm/dt/simpler-paper.svg?style=flat-square"></a>
 </p>
 
-> Simpler paper, [中文](README_CN.md)  
- A very simple document generator. [preview](https://wittbulter.github.io/simpler-paper/)  
+> A very simple document generator. [preview](https://wittbulter.github.io/simpler-paper/)
  Quickly build and deploy markdown files with a few commands.
 
 ## Guide
@@ -23,6 +22,7 @@
 - [Configuration Details](#configuration-details)
 - [LICENSE](#license)
 - [Documentation](https://wittbulter.github.io/simpler-paper/)
+- [中文](README_CN.md)
 
 ### Feature
 
@@ -38,44 +38,21 @@
 
 ### Before
 To use simpler-paper, as the following was required:
-- [Git](https://git-scm.com/downloads)
 - [NodeJS](https://nodejs.org/en/)
 
 ### Getting Started
-1. Simpler-paper install:
-    ```bash
-    # Install simpler-paper
-    npm i -g simpler-paper
-    ```
-1. Init, to create the doc folder or generate the config file in existing folder:
-    ```bash
-    # Init (create "paper.config.json" in target project doc directory)
-    paper init
-    ```
-1. Add markdown files in document folder.
-1. Build:
-    ```bash
-    # Build to html
-    paper build
-    ```
-    Once built, you can choose to have a local preview
-    ```bash
-    # Local preview
-    paper server
-    ```
-    The default port for local preview is 3001.[http://localhost:3001/](http://localhost:3001/)  
-1. Deploy:
-    ```bash
-    # Deploy to GitHub
-    paper deploy
-    ```
-    Make sure the current directory of operations is a Git repository. [Set](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/#enabling-github-pages-to-publish-your-site-from-master-or-gh-pages) to GitHub pages on GitHub after deployment.
-### Grammar Extend
-- [Prompt message](https://wittbulter.github.io/simpler-paper/#/grammar.md)
-    - Info: `#> info message`
-    - Warning: `?> warning message`
-    - Error: `!> error message`
-    
+1. install: `npm i -g simpler-paper`
+
+2. init: `paper init` . to create the doc folder or generate the config file in existing folder.
+
+3. add markdown files in document folder. 🤔🤔
+
+4. build: `paper build` . if you want preview: `paper server` .
+
+5. deploy: `paper deploy` . make sure the current directory of operations is a Git repository.
+[Set](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/#enabling-github-pages-to-publish-your-site-from-master-or-gh-pages) to GitHub pages on GitHub after deployment.
+
+
 ### Configuration Details
 You can create a `paper.config.json` file in the document directory.
 
