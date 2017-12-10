@@ -10,8 +10,7 @@
 <a target="_blank" href="https://www.npmjs.com/package/simpler-paper" title="Downloads"><img src="https://img.shields.io/npm/dt/simpler-paper.svg?style=flat-square"></a>
 </p>
 
-> simpler paper, [English](README.md)  
-> 一个简单易用的文档生成器. [预览](https://wittbulter.github.io/simpler-paper/)  
+> 一个简单易用的文档生成器. [预览](https://wittbulter.github.io/simpler-paper/)
 > 快速的将众多 markdown 文件生成结构化的网站，并一键部署至 github  
 
 ## 目录
@@ -22,10 +21,11 @@
 - [配置文件说明](#配置文件说明)
 - [LICENSE](#license)
 - [更多文档](https://wittbulter.github.io/simpler-paper/)
+- [English](README.md)
 
 ### 特点
 
-- 敏捷。只有一个脚本(13k, gizp 后大约 5k)，没有任何框架。
+- 敏捷。只有一个脚本(13k, gzip 后大约 5k)，没有任何框架。
 
 - 简单。只需要运行一个命令。
 
