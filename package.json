@@ -40,6 +40,7 @@
     "@types/promise": "^7.1.30",
     "commitlint": "^5.2.5",
     "cz-conventional-changelog": "^2.1.0",
+    "husky": "^0.14.3",
     "ts-loader": "^3.1.1",
     "tslint": "^5.8.0",
     "tslint-loader": "^3.5.3",
