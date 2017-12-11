@@ -8,9 +8,12 @@ branches:
   only:
     - master
 
+before_install: git fetch --unshallow
+
 install:
   - npm i -g typescript webpack
   - npm i
 
 script:
+  - /bin/bash build/lint-commits.sh
   - npm run build
