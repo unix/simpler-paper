@@ -37,9 +37,9 @@ export class Router {
   }
   
   private initList(): void {
-    const sideList: HTMLElement = document.querySelector('.side-list')
+    const sideList: Element = document.querySelector('.side-list')
     const links: NodeListOf<Element> = sideList.querySelectorAll('a')
-    Array.from(links).forEach(link => {
+    Array.from(links).forEach((link: Element) => {
       this.links.push({
         el: link,
         href: link.getAttribute('href'),

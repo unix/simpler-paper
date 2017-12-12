@@ -8,10 +8,9 @@ export class Highlight {
   
   handle(): void {
     if (!window.hljs) return
+    const { highlightBlock } = window.hljs
     const blocks: NodeListOf<Element> = document.querySelectorAll('pre')
-    Array.from(blocks).forEach(code => {
-      window.hljs.highlightBlock(code)
-    })
+    Array.from(blocks).forEach(code => highlightBlock(code))
   }
   
 }

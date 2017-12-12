@@ -9,6 +9,13 @@ export class Indicator {
     indicatorElement.classList.toggle('show', show)
   }
   
+  static makeIndicatorElement(d: Document): HTMLElement {
+    const _div: HTMLElement = d.createElement('div')
+    _div.classList.add('loading-indicator')
+    _div.innerHTML = `<div class="loading-indicator-container"><span>Loading</span></div>`
+    return _div
+  }
+  
   constructor(eventHub: EventHub) {
     this.init()
     eventHub.listen('container-will-change', () => this.willChange())
@@ -23,16 +30,9 @@ export class Indicator {
     Indicator.toggleIndicator(this.indicatorElement, false)
   }
   
-  private makeIndicatorElement(): HTMLElement {
-    const _div: HTMLElement = document.createElement('div')
-    _div.classList.add('loading-indicator')
-    _div.innerHTML = `<div class="loading-indicator-container"><span>Loading</span></div>`
-    return _div
-  }
-  
   private init(): void {
-    const main: HTMLElement = document.querySelector('.main')
-    this.indicatorElement = this.makeIndicatorElement()
+    const main: Element = document.querySelector('.main')
+    this.indicatorElement = Indicator.makeIndicatorElement(document)
     main.appendChild(this.indicatorElement)
   }
   

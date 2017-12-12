@@ -1,29 +1,29 @@
 
 export class BackToTop {
   
-  static toggleBackButton(btnElement: HTMLElement, show: boolean): void {
+  static toggleBackButton(btnElement: Element, show: boolean): void {
     btnElement.classList.toggle('show', show)
   }
   
-  static handleBackButton(container: HTMLElement): void {
+  static handleBackButton(container: Element): void {
     container.scrollTop = 0
+  }
+  
+  static makeBackButton(d: Document): Element {
+    const _div: Element = d.createElement('div')
+    _div.classList.add('back-to-top')
+    _div.innerHTML = `<div class="back-to-top-container"><span>Back</span></div>`
+    return _div
   }
 
   constructor() {
     this.init()
   }
   
-  private makeBackBtn(): HTMLElement {
-    const _div: HTMLElement = document.createElement('div')
-    _div.classList.add('back-to-top')
-    _div.innerHTML = `<div class="back-to-top-container"><span>Back</span></div>`
-    return _div
-  }
-  
   private init(): void {
-    const container: HTMLElement = document.querySelector('#container-position')
-    const main: HTMLElement = document.querySelector('.main')
-    const backButton: HTMLElement = this.makeBackBtn()
+    const container: Element = document.querySelector('#container-position')
+    const main: Element = document.querySelector('.main')
+    const backButton: Element = BackToTop.makeBackButton(document)
     main.appendChild(backButton)
   
     backButton.addEventListener('click', () => {
