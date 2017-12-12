@@ -15,6 +15,7 @@ else
     TO=$TRAVIS_COMMIT
 fi
 
+
 # Lint all commits in the PR
 # - Covers fork pull requests (when TO=slug/branch)
 # - Covers branch pull requests (when TO=branch)
