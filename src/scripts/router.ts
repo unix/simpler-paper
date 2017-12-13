@@ -48,7 +48,7 @@ export class Router {
   }
   
   private toggleList(hash: string): void {
-    const link = this.links.find(link => link.href === `#${hash}`)
+    const link = this.links.find(link => link.href === `#${decodeURI(hash)}`)
     if (!link) return
     this.lastLink && this.lastLink.parentElement.classList.remove('active')
     link.el.parentElement.classList.add('active')
