@@ -19,13 +19,14 @@
 - [配置文件说明](#配置文件说明)    
 - [更多文档](https://wittbulter.github.io/simpler-paper/)    
 - [LICENSE](#license)    
-- [English](README.md)    
+- [English](README.md)
+
 ### 特点    
-- 敏捷。只有一个脚本(13k, gzip 后约 5k)，没有任何框架。    
+- 敏捷。只有一个脚本(gzip 后约 3k)，没有任何框架。
 - 简单。只需要运行一个命令。    
 - 懒加载，首屏加载更快。    
 - 适应移动设备。    
-- [更多的主题](https://github.com/DhyanaChina/simpler-paper-themes)。    
+- [更多的主题](https://github.com/DhyanaChina/simpler-paper-themes)。
 
 ### 快速上手   
 1. 安装：`npm i -g simpler-paper` 。    
@@ -39,6 +40,7 @@
 4. 构建：`paper build` 。运行 `paper server` 进行本地预览。    
 5. 部署：`paper deploy` 。确保当前操作目录为 Git 仓库。
 完成部署后[设置](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/#enabling-github-pages-to-publish-your-site-from-master-or-gh-pages) 为 GitHub pages 。
+
 ### 配置文件说明    
 配置文件是 `paper init` 过程中指定文档文件夹下的 `paper.config.json` 。    
 
