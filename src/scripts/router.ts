@@ -36,6 +36,13 @@ export class Router {
     this._parseHash()
   }
   
+  private closeMenu(): void {
+    const sideBar: Element = document.querySelector('#side')
+    const isMobile: boolean = sideBar.classList.contains('xs') || sideBar.classList.contains('sm')
+    if (!isMobile) return
+    sideBar.classList.remove('active')
+  }
+  
   private initList(): void {
     const sideList: Element = document.querySelector('.side-list')
     const links: NodeListOf<Element> = sideList.querySelectorAll('a')
@@ -57,12 +64,13 @@ export class Router {
   
   private _parseHash(): void {
     this.eventHub.dispath('container-will-change')
-    
     const hash: string = Router.removeHashTag(window.location.hash)
+    
+    // update list style and address link
     this.toggleList(hash)
-    let path: string = '/static/' + this.docPath + hash
     
     // default router path
+    let path: string = '/static/' + this.docPath + hash
     if (path.endsWith('/')) {
       path += window.__paper.router.default
     }
@@ -77,11 +85,12 @@ export class Router {
     _div.innerHTML = await res.text()
     this.slotElement.innerHTML = ''
     this.slotElement.appendChild(_div)
-    
     this.slotElement.parentElement.scrollTo(0, 0)
     
     // emit router event
     this.eventHub.dispath('container-changed', path)
+    // in mobile, close menu side
+    this.closeMenu()
   }
   
 }

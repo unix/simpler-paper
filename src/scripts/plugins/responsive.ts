@@ -46,12 +46,12 @@ export class Responsive {
   }
   
   private initMobileEvent(): void {
-    const sidebar: Element = document.querySelector('#side')
-  
-    sidebar.addEventListener('click', () => {
-      const isMobile: boolean = sidebar.classList.contains('xs') || sidebar.classList.contains('sm')
+    const sideTitle: Element = document.querySelector('.side-title')
+    const sideBar: Element = document.querySelector('#side')
+    sideTitle.addEventListener('click', () => {
+      const isMobile: boolean = sideBar.classList.contains('xs') || sideBar.classList.contains('sm')
       if (!isMobile) return
-      sidebar.classList.toggle('active')
+      sideBar.classList.toggle('active')
     })
     
   }
