@@ -19,3 +19,7 @@ here is a list of all topics at present.
 
   <img src="assets/theme-plain.png" width="500" height="260">
 
+- Dark `theme: "dark`
+
+  <img src="assets/theme-dark.png" width="500" height="260">
+
