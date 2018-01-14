@@ -1,6 +1,6 @@
 {
   "name": "simpler-paper",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "description": "A very simple document generator.",
   "main": "dist/bin/paper.js",
   "scripts": {
