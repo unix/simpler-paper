@@ -1,0 +1,80 @@
+<h2 id="configuration">Configuration</h2>
+<p>Configuration file can help you set up a more detailed document，it is under your document folder,
+if you are confused about these configurations, you can skip here~~</p>
+<h3 id="add-paper-config-json">Add paper.config.json</h3>
+<blockquote>
+<p>run <code>paper init</code> can quickly create configuration file, if you can&#39;t find <code>paper.config.json</code>.</p>
+</blockquote>
+<p>Example:</p>
+<pre><code class="lang-html">
+-------------   project dir
+|<span class="hljs-string">--- build
+</span>|<span class="hljs-string">--- dist
+</span>|<span class="hljs-string">--- scripts
+</span>|<span class="hljs-string">--- docs
+</span>|<span class="hljs-string">    </span>|<span class="hljs-string">--- quickstart.md
+</span>|<span class="hljs-string">    </span>|<span class="hljs-string">--- hello.md
+</span>|<span class="hljs-string">    </span>|<span class="hljs-string">--- paper.config.json   (add paper.config.json in doc dir)
+...</span>
+</code></pre>
+<h3 id="all-properties">All Properties</h3>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>type</th>
+<th>default</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>alias</td>
+<td><code>{ [string]: string }</code></td>
+<td><code>{}</code></td>
+<td>document the alias, the value will be displayed after compilation</td>
+</tr>
+<tr>
+<td>title</td>
+<td><code>string</code></td>
+<td><code>&#39;document title&#39;</code></td>
+<td>simpler paper</td>
+</tr>
+<tr>
+<td>minimap</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>generate mini maps on the right side of each document</td>
+</tr>
+<tr>
+<td>backToTop</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>back to top button</td>
+</tr>
+<tr>
+<td>indicator</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>loading indicator</td>
+</tr>
+<tr>
+<td>docPath</td>
+<td><code>string</code></td>
+<td><code>&#39;/&#39;</code></td>
+<td>document page path</td>
+</tr>
+<tr>
+<td>theme</td>
+<td><code>string</code></td>
+<td><code>&#39;default&#39;</code></td>
+<td>paper theme</td>
+</tr>
+<tr>
+<td>output</td>
+<td><code>string</code></td>
+<td><code>&#39;dist&#39;</code></td>
+<td>compile ouput</td>
+</tr>
+</tbody>
+</table>

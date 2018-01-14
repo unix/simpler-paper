@@ -1,0 +1,37 @@
+<h2 id="menu">Menu</h2>
+<h3 id="multilayer-menus">Multilayer Menus</h3>
+<p>if you want to create a menu that contains parent-child relationships, you just need to create folders.
+simpler-paper automatically generate menus based on hierarchical relationships.
+like:</p>
+<pre><code class="lang-html"><span class="hljs-symbol">*</span><span class="hljs-symbol">*</span>doc source<span class="hljs-symbol">*</span><span class="hljs-symbol">*</span>
+|<span class="hljs-string">____docs
+</span>|<span class="hljs-string"> </span>|____install
+|<span class="hljs-string"> </span>|<span class="hljs-string"> </span>|<span class="hljs-string">____install.1.md
+</span>|<span class="hljs-string"> </span>|<span class="hljs-string"> </span>|<span class="hljs-string">____install.2.md
+</span>|<span class="hljs-string"> </span>|____problems
+|<span class="hljs-string"> </span>|<span class="hljs-string"> </span>|<span class="hljs-string">____answer.1.md
+</span>|<span class="hljs-string"> </span>|<span class="hljs-string"> </span>|<span class="hljs-string">____answer.2.md
+</span>|<span class="hljs-string"> </span>|<span class="hljs-string">____paper.config.json</span>
+</code></pre>
+<p>run <code>paper bd</code> and get the following effect:</p>
+<p><img src="assets/example-multilayer-menu.png" alt="example1"></p>
+<p><br/>
+<br/></p>
+<h3 id="ordering">Ordering</h3>
+<p>both files and folders support manually specifying weights, you just need to add a prefix to them.
+prefixes are automatically removed after compilation.
+like:</p>
+<pre><code class="lang-html"><span class="hljs-symbol">*</span><span class="hljs-symbol">*</span>doc source<span class="hljs-symbol">*</span><span class="hljs-symbol">*</span>
+|<span class="hljs-string">____docs
+</span>|<span class="hljs-string"> </span>|____install
+|<span class="hljs-string"> </span>|<span class="hljs-string"> </span>|<span class="hljs-string">____9_install.1.md
+</span>|<span class="hljs-string"> </span>|<span class="hljs-string"> </span>|<span class="hljs-string">____5_install.2.md
+</span>|<span class="hljs-string"> </span>|____problems
+|<span class="hljs-string"> </span>|<span class="hljs-string"> </span>|<span class="hljs-string">____answer.1.md
+</span>|<span class="hljs-string"> </span>|<span class="hljs-string"> </span>|<span class="hljs-string">____answer.2.md
+</span>|<span class="hljs-string"> </span>|<span class="hljs-string">____paper.config.json</span>
+</code></pre>
+<p>run <code>paper bd</code> and get the following effect:</p>
+<p><img src="assets/example-sort.png" alt="example2"></p>
+<p><br/>
+<br/></p>

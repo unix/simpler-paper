@@ -1,0 +1,33 @@
+<h2 id="quickstart">QuickStart</h2>
+<p><a href="https://github.com/DhyanaChina/simpler-paper">simpler-paper</a> is a minimalist document generator.
+you only need to run a command, all of the Markdown will be automatically integrated into the site.</p>
+<p>In principle, we have reduced the configuration as much as possible, most of the functions are customary,
+you can find the way to use in the <strong>feature</strong> directory.</p>
+<p>In addition, we have also prepared a different style of css-style for you, you never to worry about style. everything is so simple.</p>
+<h3 id="build-and-preview">Build and preview</h3>
+<p>with just one command, you can easily compile the file and the local preview.</p>
+<pre><code class="lang-bash"><span class="hljs-meta">#</span><span class="bash"> install </span>
+npm install -g simpler-paper  
+<span class="hljs-meta">
+#</span><span class="bash"> init  </span>
+paper init
+<span class="hljs-meta">
+#</span><span class="bash"> dont forget to add some markdown files.</span>
+<span class="hljs-meta">#</span><span class="bash"> build to html</span>
+paper build 
+<span class="hljs-meta">
+#</span><span class="bash"> preview  </span>
+paper s
+</code></pre>
+<h3 id="deploy">Deploy</h3>
+<pre><code class="lang-bash"><span class="hljs-comment"># In default, the document will be released to github.    </span>
+paper <span class="hljs-keyword">deploy</span>
+</code></pre>
+<p>you need set github pages (maybe...🙄):</p>
+<ol>
+<li>go to your rep.</li>
+<li>Settings &gt; Options &gt; GitHub Pages  </li>
+<li>choose the source for <strong>gh-pages branch</strong></li>
+</ol>
+<p>the actual effect:     </p>
+<p><img src="assets/example-pages.png" alt="example"></p>
