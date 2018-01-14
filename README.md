@@ -11,14 +11,14 @@
 <a target="_blank" href="https://www.npmjs.com/package/simpler-paper" title="Downloads"><img src="https://img.shields.io/npm/dt/simpler-paper.svg?style=flat-square"></a>
 </p>
 
-> A very simple document generator. [preview](https://wittbulter.github.io/simpler-paper/).    
+> A very simple document generator. [preview](http://paper.wittsay.cc/).
 > Quickly build and deploy markdown files with a few commands.    
 
 ## Guide  
 - [Feature](#feature)  
 - [Getting Started](#getting-started)  
 - [Configuration Details](#configuration-details)  
-- [Documentation](https://wittbulter.github.io/simpler-paper/)  
+- [Documentation](http://paper.wittsay.cc/)
 - [LICENSE](#license)  
 - [中文](README_CN.md)
 
