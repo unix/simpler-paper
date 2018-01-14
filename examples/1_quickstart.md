@@ -1,5 +1,5 @@
 ## QuickStart
-**simpler-paper** is a minimalist document generator.
+[simpler-paper](https://github.com/DhyanaChina/simpler-paper) is a minimalist document generator.
 you only need to run a command, all of the Markdown will be automatically integrated into the site.
 
 In principle, we have reduced the configuration as much as possible, most of the functions are customary,
